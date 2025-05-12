@@ -18,6 +18,7 @@ const App = () => {
       { id: 1, name: 'Beach Ball', price: 150, image: 'beach-ball.jpg' },
       { id: 2, name: 'Water Gun', price: 200, image: 'water-gun.jpg' },
       { id: 3, name: 'Frisbee', price: 100, image: 'frisbee.jpg' },
+      { id: 4, name: 'Sand Bucket', price: 120, image: 'sand-bucket.jpg' },
     ];
     setProducts(mockProducts);
   }, []);
@@ -51,15 +52,18 @@ const App = () => {
 
   const handleCheckout = () => {
     navigate('/order');
-    setCartItems([]); // Clear cart after checkout
+    setCartItems([]);
   };
+
+  // คำนวณจำนวนสินค้าทั้งหมดโดยรวม quantity
+  const totalCartItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header cartCount={cartItems.length} />
+      <Header cartCount={totalCartItems} />
       <main className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home addToCart={addToCart} />} />
           <Route
             path="/products"
             element={<Products products={products} addToCart={addToCart} />}
@@ -76,6 +80,7 @@ const App = () => {
             }
           />
           <Route path="/order" element={<Order />} />
+          <Route path="/admin" element={<div>Admin Page (Under Construction)</div>} />
         </Routes>
       </main>
       <Footer />

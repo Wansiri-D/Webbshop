@@ -12,7 +12,12 @@ const ProductList = ({ products, addToCart }) => {
           />
           <h2>{product.name}</h2>
           <p className="promotional-header">{product.price} SEK</p>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
+          <button
+            className="orange add-to-cart-btn"
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
         </div>
       ))}
     </div>

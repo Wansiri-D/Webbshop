@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="navbar text-white text-center">
+    <footer className="footer text-white text-center">
       <p className="text-white">© 2025 PlaySummer. All rights reserved.</p>
     </footer>
   );

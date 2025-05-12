@@ -1,19 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cartIcon from '../assets/cart-icon.png';
+import adminIcon from '../assets/admin-icon.png';
 
 const Header = ({ cartCount }) => {
   return (
     <header className="navbar flex justify-between items-center">
-      <Link to="/">
-        <h1 className="text-white">PlaySummer</h1>
+      {/* มุมซ้าย: ปุ่ม Products */}
+      <Link to="/products" className="products-btn">
+        Products
       </Link>
-      <nav>
-        <Link to="/" className="text-white mx-4">Home</Link>
-        <Link to="/products" className="text-white mx-4">Products</Link>
-        <Link to="/cart" className="text-white mx-4">
-          Cart ({cartCount})
+
+      {/* ตรงกลาง: ข้อความ PlaySummer */}
+      <Link to="/">
+        <h1 className="playsummer-title">PlaySummer</h1>
+      </Link>
+
+      {/* มุมขวา: ไอคอนตะกร้าและแอดมิน */}
+      <div className="flex items-center">
+        <Link to="/cart" className="icon-container">
+          <img src={cartIcon} alt="Cart" className="h-[42px] w-[42px] object-contain icon" />
+          {cartCount > 0 && (
+            <span className="cart-count">
+              {cartCount}
+            </span>
+          )}
         </Link>
-      </nav>
+        <Link to="/admin" className="icon-container">
+          <img src={adminIcon} alt="Admin" className="h-[42px] w-[42px] object-contain icon" />
+        </Link>
+      </div>
     </header>
   );
 };

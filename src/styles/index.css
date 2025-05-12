@@ -1,57 +1,57 @@
+@import '@fontsource/open-sans';
+@import '@fontsource/open-sans/600.css';
+@import '@fontsource/open-sans/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import Open Sans font (assuming locally installed or via npm) */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
-/* Global styles */
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5; /* Gray background */
+  background-color: #F5F5F5;
 }
 
 /* Typography */
 h1 {
-  font-weight: 700; /* Bold */
-  font-size: 32px; /* H1 size */
-  color: #0055A4; /* Blue for headers */
+  font-weight: 700;
+  font-size: 32px;
+  color: #0055A4;
   line-height: 1.2;
   margin-bottom: 8px;
 }
 
 h2 {
-  font-weight: 700; /* Bold */
-  font-size: 24px; /* H2 size */
-  color: #0055A4; /* Blue for headers */
+  font-weight: 700;
+  font-size: 24px;
+  color: #0055A4;
   line-height: 1.2;
   margin-bottom: 8px;
 }
 
 .promotional-header {
-  color: #FF0000; /* Red for promotional headers */
+  color: #FF0000;
 }
 
 p {
-  font-weight: 400; /* Regular */
-  font-size: 16px; /* Body text size */
-  color: #000000; /* Black for readability */
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
   line-height: 1.5;
   margin-bottom: 4px;
 }
 
 .secondary-text {
   font-size: 14px;
-  color: #666666; /* Gray for secondary text */
+  color: #666666;
 }
 
 button {
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
   font-size: 16px;
-  color: #FFFFFF; /* White text */
-  background-color: #FF0000; /* Red for primary CTA */
+  color: #FFFFFF;
+  background-color: #FF0000;
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -60,35 +60,106 @@ button {
 }
 
 button.green {
-  background-color: #28A745; /* Green for checkout/login */
+  background-color: #28A745;
 }
 
 button.yellow {
-  background-color: #FFC107; /* Yellow for secondary buttons */
+  background-color: #FFC107;
+}
+
+button.orange {
+  background-color: #FF6200;
+}
+
+/* Hero Section styles */
+.hero-section {
+  background: linear-gradient(135deg, #0055A4 0%, #FFC107 100%);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 16px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-title {
+  font-size: 36px;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.hero-cta {
+  background-color: #FF6200;
+  padding: 12px 24px;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.hero-cta:hover {
+  background-color: #E55700;
 }
 
 .error {
   font-size: 14px;
-  color: #FF0000; /* Red for errors */
+  color: #FF0000;
 }
 
 .success {
   font-size: 14px;
-  color: #28A745; /* Green for success */
+  color: #28A745;
 }
 
 /* Custom styles for components */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .navbar {
-  background-color: #0055A4; /* Blue for navigation */
+  background-color: #0055A4;
   padding: 16px;
 }
 
+.footer {
+  background-color: #0055A4;
+  padding: 16px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 24px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
 .product-card {
-  background-color: #FFFFFF; /* White background for cards */
-  border: 1px solid #F5F5F5; /* Gray border */
+  background-color: #FFFFFF;
+  border: 1px solid #F5F5F5;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
+  transition: transform 0.3s;
+  scroll-snap-align: start;
+}
+
+.product-card.bg-white {
+  background-color: #FFFFFF;
+}
+
+.product-card.bg-yellow-50 {
+  background-color: #FFF9E6;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
 }
 
 .cart-item {
@@ -104,4 +175,99 @@ button.yellow {
   padding: 24px;
   border-radius: 8px;
   text-align: center;
+}
+
+/* Specific styles for icons */
+.icon {
+  height: 42px !important;
+  width: 42px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.icon-container {
+  position: relative;
+  margin-left: 24px !important; /* ปรับระยะห่างให้สมส่วน */
+  margin-right: 24px !important;
+  display: flex;
+  align-items: center;
+}
+
+.icon-container:hover .icon {
+  transform: scale(1.1);
+}
+
+.icon-container:active .icon {
+  transform: scale(0.95);
+}
+
+/* Specific styles for cart count */
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #FF0000;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+/* Specific styles for PlaySummer title */
+.playsummer-title {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #FFC107 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+/* Specific styles for Products button */
+.products-btn {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.products-btn:hover {
+  background-color: #FFC107;
+  color: #000000;
+}
+
+/* Add to Cart button styles */
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+  background-color: #E55700;
+  transition: all 0.1s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .hero-section {
+    padding: 60px 20px;
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-subtitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 80px 20px;
+  }
 }
