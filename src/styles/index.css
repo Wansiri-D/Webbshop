@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Open Sans font (assuming locally installed or via npm) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* Global styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5; /* Gray background */
+}
+
+/* Typography */
+h1 {
+  font-weight: 700; /* Bold */
+  font-size: 32px; /* H1 size */
+  color: #0055A4; /* Blue for headers */
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-weight: 700; /* Bold */
+  font-size: 24px; /* H2 size */
+  color: #0055A4; /* Blue for headers */
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.promotional-header {
+  color: #FF0000; /* Red for promotional headers */
+}
+
+p {
+  font-weight: 400; /* Regular */
+  font-size: 16px; /* Body text size */
+  color: #000000; /* Black for readability */
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.secondary-text {
+  font-size: 14px;
+  color: #666666; /* Gray for secondary text */
+}
+
+button {
+  font-weight: 600; /* SemiBold */
+  font-size: 16px;
+  color: #FFFFFF; /* White text */
+  background-color: #FF0000; /* Red for primary CTA */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+button.green {
+  background-color: #28A745; /* Green for checkout/login */
+}
+
+button.yellow {
+  background-color: #FFC107; /* Yellow for secondary buttons */
+}
+
+.error {
+  font-size: 14px;
+  color: #FF0000; /* Red for errors */
+}
+
+.success {
+  font-size: 14px;
+  color: #28A745; /* Green for success */
+}
+
+/* Custom styles for components */
+.navbar {
+  background-color: #0055A4; /* Blue for navigation */
+  padding: 16px;
+}
+
+.product-card {
+  background-color: #FFFFFF; /* White background for cards */
+  border: 1px solid #F5F5F5; /* Gray border */
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.order-confirm {
+  background-color: #FFFFFF;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+}
