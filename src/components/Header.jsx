@@ -13,7 +13,7 @@ const Header = ({ cartCount }) => {
 
       {/* ตรงกลาง: ข้อความ PlaySummer */}
       <Link to="/">
-        <h1 className="playsummer-title">PlaySummer</h1>
+        <h1 className="playsummer-title animated-title">PlaySummer</h1>
       </Link>
 
       {/* มุมขวา: ไอคอนตะกร้าและแอดมิน */}

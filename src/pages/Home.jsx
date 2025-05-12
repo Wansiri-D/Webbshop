@@ -1,12 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import newProductImage1 from '../assets/new-product.jpg';
+import newProductImage2 from '../assets/new-product2.jpg';
+import newProductImage3 from '../assets/new-product3.jpg';
 
 const Home = ({ addToCart }) => {
-  const products = [
-    { id: 1, name: 'Beach Ball', price: 150, image: '/assets/beach-ball.jpg' },
-    { id: 2, name: 'Water Gun', price: 200, image: '/assets/water-gun.jpg' },
-    { id: 3, name: 'Frisbee', price: 100, image: '/assets/frisbee.jpg' },
-    { id: 4, name: 'Sand Bucket', price: 120, image: '/assets/sand-bucket.jpg' },
+  const newProducts = [
+    {
+      id: 21,
+      name: 'New Summer Splash',
+      price: 250,
+      description: 'A fun water toy perfect for summer adventures! Enjoy endless splashing fun with this durable and colorful splash toy.',
+      image: newProductImage1,
+    },
+    {
+      id: 22,
+      name: 'Super Beach Blaster',
+      price: 300,
+      description: 'A powerful water blaster for epic beach battles! Made with high-quality materials for long-lasting fun.',
+      image: newProductImage2,
+    },
+    {
+      id: 23,
+      name: 'Mega Sand Sculptor',
+      price: 180,
+      description: 'Create amazing sand sculptures with this all-in-one kit! Perfect for kids and families at the beach.',
+      image: newProductImage3,
+    },
   ];
 
   return (
@@ -20,24 +40,73 @@ const Home = ({ addToCart }) => {
         </Link>
       </div>
 
-      {/* รายการสินค้า - 4 ช่องใน 1 แถว */}
-      <div className="product-grid">
-        {products.map((product, index) => (
-          <div key={product.id} className={`product-card ${index % 2 === 0 ? 'bg-white' : 'bg-yellow-50'}`}>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded"
-            />
-            <h2>{product.name}</h2>
-            <button
-              className="orange add-to-cart-btn"
-              onClick={() => addToCart(product)}
-            >
-              Add to Cart
-            </button>
-          </div>
-        ))}
+      {/* New Arrival Section 1 (Image on Left, Details on Right) */}
+      <div className="new-arrival-section">
+        <div className="new-arrival-image-container">
+          <img
+            src={newProducts[0].image}
+            alt={newProducts[0].name}
+            className="new-arrival-image"
+          />
+          <span className="new-arrival-badge">NEW!</span>
+        </div>
+        <div className="new-arrival-details">
+          <h2>{newProducts[0].name}</h2>
+          <p className="promotional-header">{newProducts[0].price} SEK</p>
+          <p>{newProducts[0].description}</p>
+          <button
+            className="orange add-to-cart-btn"
+            onClick={() => addToCart(newProducts[0])}
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      {/* New Arrival Section 2 (Details on Left, Image on Right) */}
+      <div className="new-arrival-section">
+        <div className="new-arrival-details">
+          <h2>{newProducts[1].name}</h2>
+          <p className="promotional-header">{newProducts[1].price} SEK</p>
+          <p>{newProducts[1].description}</p>
+          <button
+            className="orange add-to-cart-btn"
+            onClick={() => addToCart(newProducts[1])}
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div className="new-arrival-image-container">
+          <img
+            src={newProducts[1].image}
+            alt={newProducts[1].name}
+            className="new-arrival-image"
+          />
+          <span className="new-arrival-badge">NEW!</span>
+        </div>
+      </div>
+
+      {/* New Arrival Section 3 (Image on Left, Details on Right) */}
+      <div className="new-arrival-section">
+        <div className="new-arrival-image-container">
+          <img
+            src={newProducts[2].image}
+            alt={newProducts[2].name}
+            className="new-arrival-image"
+          />
+          <span className="new-arrival-badge">NEW!</span>
+        </div>
+        <div className="new-arrival-details">
+          <h2>{newProducts[2].name}</h2>
+          <p className="promotional-header">{newProducts[2].price} SEK</p>
+          <p>{newProducts[2].description}</p>
+          <button
+            className="orange add-to-cart-btn"
+            onClick={() => addToCart(newProducts[2])}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
