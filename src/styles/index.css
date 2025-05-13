@@ -79,31 +79,39 @@ button.orange {
 
 /* Hero Section styles */
 .hero-section {
-  background: #FEF9EF; /* เปลี่ยนพื้นหลังเป็นสีครีม */
-  padding: 40px 20px;
+  background: #FEF9EF;
+  padding: 2px 20px;
+  height: 20px;
   text-align: center;
   border-radius: 12px;
   margin: 20px 0;
+  margin-bottom: 80px; /* เพิ่มระยะห่างด้านล่างเป็น 80px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-title {
-  font-size: 36px;
+  font-size: 18px;
   color: #4A4A4A;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   text-shadow: none;
+  line-height: 1;
 }
 
 .hero-subtitle {
-  font-size: 20px;
+  font-size: 12px;
   color: #4A4A4A;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   text-shadow: none;
+  line-height: 1;
 }
 
 /* New Arrival Section styles */
 .new-arrival-section {
-  background: linear-gradient(135deg, #FEF9EF 0%, #FEF9EF 100%);
-  padding: 40px 20px;
+  background: rgba(255, 134, 94, 0.5);
+  padding: 20px 20px;
   border-radius: 12px;
   margin: 20px 0;
   border: 2px solid rgba(255, 134, 94, 0.5);
@@ -160,7 +168,35 @@ button.orange {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-arrival-details h2 {
+  font-size: 32px;
+}
+
+.new-arrival-details p {
+  font-size: 20px;
+}
+
+.read-more-btn {
+  background-color: #FF865E;
+  padding: 12px 24px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background-color: #FEF9EF;
+  color: #FF865E;
+  transform: scale(1.05);
+}
+
+.read-more-btn:active {
+  background-color: #FEF9EF;
+  color: #FF865E;
+  transform: scale(0.95);
 }
 
 /* Cart Page styles */
@@ -678,10 +714,48 @@ button.orange {
   text-align: center;
   transition: transform 0.3s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 350px; /* กำหนดความสูงขั้นต่ำเพื่อให้แน่ใจว่าทุกช่องมีขนาดเท่ากัน */
 }
 
 .product-card:hover {
   transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px; /* กำหนดความสูงของรูปภาพให้เท่ากันทุกช่อง */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.product-card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  flex-grow: 1; /* ให้ชื่อสินค้ายืดหยุ่นตามเนื้อหา */
+}
+
+.product-card p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.product-card p.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FF865E;
+  margin-bottom: 8px;
+  margin-top: auto; /* ดันราคาไปด้านล่างก่อนปุ่ม */
+}
+
+.product-card button.add-to-cart-btn {
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
 }
 
 .cart-item {

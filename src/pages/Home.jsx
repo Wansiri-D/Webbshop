@@ -48,28 +48,24 @@ const Home = ({ addToCart }) => {
                 </div>
                 <div className="new-arrival-details">
                   <h2>{product.name}</h2>
-                  <p className="promotional-header">{product.price} SEK</p>
                   <p>{product.description}</p>
-                  <button
-                    className="orange add-to-cart-btn"
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to Cart
-                  </button>
+                  <Link to={`/products/${product.docId}`}>
+                    <button className="orange read-more-btn">
+                      Read More
+                    </button>
+                  </Link>
                 </div>
               </>
             ) : (
               <>
                 <div className="new-arrival-details">
                   <h2>{product.name}</h2>
-                  <p className="promotional-header">{product.price} SEK</p>
                   <p>{product.description}</p>
-                  <button
-                    className="orange add-to-cart-btn"
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to Cart
-                  </button>
+                  <Link to={`/products/${product.docId}`}>
+                    <button className="orange read-more-btn">
+                      Read More
+                    </button>
+                  </Link>
                 </div>
                 <div className="new-arrival-image-container">
                   <img
