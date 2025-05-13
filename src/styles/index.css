@@ -287,28 +287,131 @@ button.orange {
   padding: 40px 0;
 }
 
+/* Admin Layout styles */
+.admin-layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* ปรับตามความสูงของ Header/Footer */
+}
+
+.admin-sidebar {
+  width: 300px; /* คงความกว้าง */
+  background-color: #1A202C; /* เปลี่ยนสีพื้นหลังเป็นน้ำเงินเทาเข้ม */
+  padding: 30px 20px;
+  color: #FFFFFF;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-nav-link {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+  position: relative; /* เพื่อใช้กับเส้นใต้ */
+}
+
+.admin-nav-link:hover {
+  font-weight: 700; /* ตัวหนาขึ้นเมื่อ hover */
+}
+
+.admin-nav-link.active {
+  font-weight: 700; /* ตัวหนาขึ้นเมื่อเลือก */
+  /* ลบ background-color: #FFC107 */
+  /* เพิ่มเส้นใต้สีขาว */
+}
+
+.admin-nav-link.active::after,
+.admin-nav-link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  width: calc(100% - 40px); /* ความกว้างของเส้นใต้ */
+  height: 2px;
+  background-color: #FFFFFF;
+  transition: width 0.3s ease;
+}
+
+.admin-nav-link:hover::after {
+  width: calc(100% - 40px);
+}
+
+.nav-icon {
+  font-size: 20px; /* ขนาดไอคอน */
+}
+
+.admin-logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.admin-logout:hover {
+  background-color: transparent; /* ไม่เปลี่ยนสีพื้นหลัง */
+  font-weight: 700;
+}
+
+.admin-logout:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 2px;
+  background-color: #FF0000; /* เส้นใต้สีแดงสำหรับ Log out */
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #F5F5F5;
+  min-height: calc(100vh - 60px);
+}
+
 /* Admin Page styles */
 .admin-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 16px;
-  background-color: #FFF9E6;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #E5E7EB;
 }
 
 .admin-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 600px;
+  gap: 25px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .form-group label {
@@ -319,7 +422,7 @@ button.orange {
 
 .form-group input,
 .form-group textarea {
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: 2px solid #0055A4;
   border-radius: 8px;
   font-size: 16px;
@@ -336,13 +439,13 @@ button.orange {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
 .submit-btn {
   background-color: #0055A4;
   color: #FFFFFF;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 8px;
   font-size: 20px;
   transition: all 0.3s ease;
@@ -358,6 +461,107 @@ button.orange {
   background-color: #666666;
   cursor: not-allowed;
   transform: none;
+}
+
+.cancel-btn {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #CC0000;
+  transform: scale(1.05);
+}
+
+.cancel-btn:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.progress {
+  font-size: 16px;
+  color: #0055A4;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.products-table th,
+.products-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.products-table th {
+  background-color: #0055A4;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.products-table td {
+  background-color: #FFFFFF;
+}
+
+.product-image-small {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #E5E7EB;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edit-btn {
+  background-color: #28A745;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #CC0000;
+}
+
+.edit-form {
+  margin-bottom: 20px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
 /* Custom styles for components */
@@ -598,6 +802,21 @@ button.orange {
     width: 100%;
   }
   .cart-checkout {
+    justify-content: center;
+  }
+  .admin-layout {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+  }
+  .admin-content {
+    margin-left: 0;
+  }
+  .admin-nav {
+    flex-direction: row;
+    gap: 20px;
     justify-content: center;
   }
 }

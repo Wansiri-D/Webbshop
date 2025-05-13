@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx'; // เพิ่มการนำเข้า Footer
 import Home from './pages/Home.jsx';
 import Products from './pages/Products.jsx';
 import CartPage from './pages/CartPage.jsx';
 import Order from './pages/Order.jsx';
-import Admin from './pages/Admin.jsx'; // เพิ่มการนำเข้า Admin.jsx
-import Footer from './components/Footer.jsx';
+import Admin from './pages/Admin.jsx';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -69,10 +69,10 @@ const App = () => {
             }
           />
           <Route path="/order" element={<Order />} />
-          <Route path="/admin" element={<Admin />} /> {/* อัพเดทเส้นทางไปยัง Admin.jsx */}
+          <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer /> {/* เรียกใช้ Footer */}
     </div>
   );
 };
