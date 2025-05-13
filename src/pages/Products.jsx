@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import ProductList from '../components/ProductList.jsx';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-const Products = ({ products, addToCart }) => {
+const Products = ({ addToCart }) => {
+  const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortOption, setSortOption] = useState('default');
 
-  // อัพเดท filteredProducts เมื่อ products เปลี่ยน
+  // ดึงข้อมูลสินค้าจาก Firestore
   useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const productsList = querySnapshot.docs.map(doc => ({
+          ...doc.data(),
+          docId: doc.id
+        }));
+        setProducts(productsList);
+        setFilteredProducts(productsList);
+      } catch (e) {
+        console.error("Error fetching products: ", e);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   // ค้นหาเมื่อ searchTerm เปลี่ยน
   useEffect(() => {
@@ -19,8 +35,8 @@ const Products = ({ products, addToCart }) => {
     } else {
       const fuse = new Fuse(products, {
         keys: ['name', 'category'],
-        threshold: 0.3, // ความแม่นยำของการค้นหา
-        ignoreCase: true, // ไม่สนใจตัวพิมพ์ใหญ่-เล็ก
+        threshold: 0.3,
+        ignoreCase: true,
       });
       const result = fuse.search(searchTerm).map((item) => item.item);
       setFilteredProducts(result);
@@ -69,7 +85,11 @@ const Products = ({ products, addToCart }) => {
           <option value="price-desc">Price (High to Low)</option>
         </select>
       </div>
-      <ProductList products={filteredProducts} addToCart={addToCart} />
+      {products.length > 0 ? (
+        <ProductList products={filteredProducts} addToCart={addToCart} />
+      ) : (
+        <p>Loading products...</p>
+      )}
     </div>
   );
 };

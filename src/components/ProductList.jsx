@@ -1,15 +1,12 @@
 import React from 'react';
 
 const ProductList = ({ products, addToCart }) => {
-  // จำกัดจำนวนสินค้าที่แสดงไว้ที่ 20 ชิ้น (4 ชิ้น x 5 แถว)
-  const displayedProducts = products.slice(0, 20);
-
   return (
     <div className="products-grid">
-      {displayedProducts.map((product) => (
-        <div key={product.id} className="product-card">
+      {products.map((product) => (
+        <div key={product.docId} className="product-card">
           <img
-            src={`/assets/${product.image}`}
+            src={product.imageUrl}
             alt={product.name}
             className="w-full h-48 object-cover rounded"
           />
