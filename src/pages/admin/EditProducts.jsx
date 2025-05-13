@@ -234,7 +234,7 @@ const EditProducts = () => {
                   <th>Name</th>
                   <th>Price (SEK)</th>
                   <th>Description</th>
-                  <th></th> {/* ลบข้อความ "Actions" */}
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
