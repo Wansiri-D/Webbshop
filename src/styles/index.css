@@ -10,14 +10,14 @@ body {
   font-family: 'Open Sans', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5;
+  background-color: #FEF9EF;
 }
 
 /* Typography */
 h1 {
   font-weight: 700;
   font-size: 32px;
-  color: #FF6200;
+  color: #FF865E;
   line-height: 1.2;
   margin-bottom: 24px;
 }
@@ -25,13 +25,13 @@ h1 {
 h2 {
   font-weight: 700;
   font-size: 28px;
-  color: #FF6200;
+  color: #FF865E;
   line-height: 1.3;
   margin-bottom: 12px;
 }
 
 .promotional-header {
-  color: #FF0000;
+  color: #FF865E;
   font-size: 20px;
   line-height: 1.3;
   margin-bottom: 12px;
@@ -40,7 +40,7 @@ h2 {
 p {
   font-weight: 400;
   font-size: 18px;
-  color: #000000;
+  color: #4A4A4A;
   line-height: 1.6;
   margin-bottom: 12px;
 }
@@ -54,7 +54,7 @@ button {
   font-weight: 600;
   font-size: 16px;
   color: #FFFFFF;
-  background-color: #FF0000;
+  background-color: #FF865E;
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -67,11 +67,11 @@ button.green {
 }
 
 button.yellow {
-  background-color: #FFC107;
+  background-color: #FEE440;
 }
 
 button.orange {
-  background-color: #FF6200;
+  background-color: #FF865E;
   padding: 12px 24px;
   font-size: 18px;
   width: fit-content;
@@ -79,56 +79,35 @@ button.orange {
 
 /* Hero Section styles */
 .hero-section {
-  background: linear-gradient(135deg, #0055A4 0%, #FFC107 100%);
-  background-size: 200% 200%;
-  animation: gradientAnimation 5s ease infinite;
+  background: #FEF9EF; /* เปลี่ยนพื้นหลังเป็นสีครีม */
   padding: 40px 20px;
   text-align: center;
-  border-radius: 8px;
-  margin: 16px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  border-radius: 12px;
+  margin: 20px 0;
 }
 
 .hero-title {
   font-size: 36px;
-  color: #FFFFFF;
+  color: #4A4A4A;
   margin-bottom: 12px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 .hero-subtitle {
   font-size: 20px;
-  color: #FFFFFF;
+  color: #4A4A4A;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.hero-cta {
-  background-color: #FF6200;
-  padding: 14px 28px;
-  font-size: 20px;
-  transition: all 0.3s ease;
-}
-
-.hero-cta:hover {
-  background-color: #E55700;
-  transform: scale(1.05);
+  text-shadow: none;
 }
 
 /* New Arrival Section styles */
 .new-arrival-section {
-  background: linear-gradient(135deg, #FFF9E6 0%, #FFF5CC 100%);
+  background: linear-gradient(135deg, #FEF9EF 0%, #FEF9EF 100%);
   padding: 40px 20px;
-  border-radius: 8px;
-  margin: 16px 0;
-  border: 2px solid #FFC107;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px solid rgba(255, 134, 94, 0.5);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -158,7 +137,7 @@ button.orange {
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: #FF6200;
+  background-color: #FF865E;
   color: #FFFFFF;
   font-size: 22px;
   font-weight: 700;
@@ -167,7 +146,7 @@ button.orange {
   text-align: center;
   text-transform: uppercase;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border: 3px solid #FFFFFF;
+  border: 3px solid #FEE440;
   transition: transform 0.3s ease;
 }
 
@@ -189,7 +168,7 @@ button.orange {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px;
-  background-color: #FFF9E6;
+  background-color: #FEF9EF;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -229,7 +208,7 @@ button.orange {
 }
 
 .quantity-btn {
-  background-color: #0055A4;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 10px 14px;
   border-radius: 4px;
@@ -238,17 +217,17 @@ button.orange {
 }
 
 .quantity-btn:hover {
-  background-color: #003d82;
+  background-color: #FEE440;
 }
 
 .quantity {
   font-size: 18px;
   font-weight: 600;
-  color: #0055A4;
+  color: #FF865E;
 }
 
 .remove-btn {
-  background-color: #FF0000;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
@@ -257,7 +236,7 @@ button.orange {
 }
 
 .remove-btn:hover {
-  background-color: #CC0000;
+  background-color: #FEE440;
 }
 
 .cart-checkout {
@@ -266,7 +245,7 @@ button.orange {
 }
 
 .checkout-btn {
-  background-color: #28A745;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 14px 28px;
   border-radius: 8px;
@@ -276,7 +255,7 @@ button.orange {
 }
 
 .checkout-btn:hover {
-  background-color: #218838;
+  background-color: #FEE440;
   transform: scale(1.05);
 }
 
@@ -290,14 +269,14 @@ button.orange {
 /* Admin Layout styles */
 .admin-layout {
   display: flex;
-  min-height: calc(100vh - 60px); /* ปรับตามความสูงของ Header/Footer */
+  min-height: calc(100vh - 60px);
 }
 
 .admin-sidebar {
-  width: 350px; /* คงความกว้าง */
-  background-color: #FFE8CC; /* เปลี่ยนสีเป็นส้มอ่อนให้เข้ากับหน้า Admin */
+  width: 350px;
+  background-color: #FEF9EF;
   padding: 30px 20px;
-  color: #1A202C; /* เปลี่ยนสีตัวอักษรเป็นสีน้ำเงินเทาเข้มเพื่อให้ตัดกับพื้นหลัง */
+  color: #4A4A4A;
 }
 
 .admin-nav {
@@ -307,7 +286,7 @@ button.orange {
 }
 
 .admin-nav-link {
-  color: #1A202C;
+  color: #4A4A4A;
   font-size: 18px;
   font-weight: 600;
   padding: 12px 20px;
@@ -322,20 +301,20 @@ button.orange {
 
 .admin-nav-link:hover {
   font-weight: 700;
-  color: #1A202C;
+  color: #FF865E;
 }
 
 .admin-nav-link.active {
   font-weight: 800;
   font-size: 20px;
-  color: #FFC107;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* เพิ่มกรอบเงาเมื่อเลือก */
-  background-color: #FFF7E6; /* เพิ่มสีพื้นหลังอ่อนเมื่อเลือก */
+  color: #FF865E;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #FFF7E6;
 }
 
 .admin-nav-link.active::after,
 .admin-nav-link:hover::after {
-  content: none; /* ลบเส้นใต้ */
+  content: none;
 }
 
 .nav-icon {
@@ -347,7 +326,7 @@ button.orange {
   border: none;
   cursor: pointer;
   text-align: left;
-  color: #1A202C;
+  color: #4A4A4A;
   font-size: 18px;
   font-weight: 600;
   padding: 12px 20px;
@@ -362,16 +341,17 @@ button.orange {
 .admin-logout:hover {
   background-color: transparent;
   font-weight: 700;
+  color: #FF865E;
 }
 
 .admin-logout:hover::after {
-  content: none; /* ลบเส้นใต้ */
+  content: none;
 }
 
 .admin-content {
   flex-grow: 1;
   padding: 30px;
-  background-color: #E6F0FA;
+  background-color: #FEF9EF;
   min-height: calc(100vh - 60px);
 }
 
@@ -381,10 +361,10 @@ button.orange {
   min-height: 600px;
   margin: 0 auto;
   padding: 30px;
-  background-color: #FFF7E6;
+  background-color: #FEF9EF;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  border: 1px solid #E5E7EB;
+  border: 1px solid rgba(255, 134, 94, 0.5);
 }
 
 .admin-form {
@@ -404,13 +384,13 @@ button.orange {
 .form-group label {
   font-size: 18px;
   font-weight: 600;
-  color: #FF6200;
+  color: #FF865E;
 }
 
 .form-group input,
 .form-group textarea {
   padding: 14px 18px;
-  border: 2px solid #FF6200;
+  border: 2px solid #FF865E;
   border-radius: 8px;
   font-size: 16px;
   font-family: 'Open Sans', Arial, sans-serif;
@@ -420,8 +400,8 @@ button.orange {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #FFC107;
-  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+  border-color: #FEE440;
+  box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
 }
 
 .form-group textarea {
@@ -430,7 +410,7 @@ button.orange {
 }
 
 .submit-btn {
-  background-color: #FF6200;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 8px;
@@ -440,7 +420,7 @@ button.orange {
 }
 
 .submit-btn:hover {
-  background-color: #E55700;
+  background-color: #FEE440;
   transform: scale(1.05);
 }
 
@@ -451,7 +431,7 @@ button.orange {
 }
 
 .cancel-btn {
-  background-color: #FF0000;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 8px;
@@ -461,7 +441,7 @@ button.orange {
 }
 
 .cancel-btn:hover {
-  background-color: #CC0000;
+  background-color: #FEE440;
   transform: scale(1.05);
 }
 
@@ -473,7 +453,7 @@ button.orange {
 
 .progress {
   font-size: 16px;
-  color: #FF6200;
+  color: #FF865E;
   text-align: center;
   margin-top: 10px;
 }
@@ -493,14 +473,14 @@ button.orange {
 }
 
 .products-table th {
-  background-color: #FF6200;
+  background-color: #FF865E;
   color: #FFFFFF;
   font-weight: 600;
 }
 
 .products-table td {
   background-color: #FFFFFF;
-  height: 66px; /* กำหนดความสูงให้เท่ากันทุกช่อง */
+  height: 66px;
 }
 
 .product-image-small {
@@ -515,13 +495,13 @@ button.orange {
 .action-buttons {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* จัดให้ปุ่มอยู่ด้านซ้าย */
+  justify-content: flex-start;
   gap: 12px;
-  height: 100%; /* ให้ความสูงเท่ากับช่องอื่น */
+  height: 100%;
 }
 
 .edit-btn {
-  background-color: #28A745;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
@@ -530,11 +510,11 @@ button.orange {
 }
 
 .edit-btn:hover {
-  background-color: #218838;
+  background-color: #FEE440;
 }
 
 .delete-btn {
-  background-color: #FF0000;
+  background-color: #FF865E;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
@@ -543,7 +523,7 @@ button.orange {
 }
 
 .delete-btn:hover {
-  background-color: #CC0000;
+  background-color: #FEE440;
 }
 
 .edit-form {
@@ -564,13 +544,72 @@ button.orange {
 }
 
 .navbar {
-  background-color: #0055A4;
+  background-color: #A2D2FF;
   padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-left {
+  margin-left: 10px;
+}
+
+.navbar-center {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.playsummer-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sun-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.icon-link {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon, .admin-icon {
+  height: 42px !important;
+  width: 42px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.cart-icon:hover, .admin-icon:hover {
+  transform: scale(1.1);
+}
+
+.cart-icon:active, .admin-icon:active {
+  transform: scale(0.95);
 }
 
 .footer {
-  background-color: #0055A4;
+  background-color: #A2D2FF;
   padding: 16px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  color: #FF865E;
+  text-align: center;
 }
 
 .products-page {
@@ -592,7 +631,7 @@ button.orange {
   width: 100%;
   max-width: 400px;
   padding: 12px 20px;
-  border: 2px solid #0055A4;
+  border: 2px solid #FF865E;
   border-radius: 8px;
   font-size: 18px;
   font-family: 'Open Sans', Arial, sans-serif;
@@ -602,24 +641,24 @@ button.orange {
 
 .search-bar:focus {
   outline: none;
-  border-color: #FFC107;
-  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+  border-color: #FEE440;
+  box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
 }
 
 .sort-select {
   padding: 12px 20px;
-  border: 2px solid #0055A4;
+  border: 2px solid #FF865E;
   border-radius: 8px;
   font-size: 18px;
   font-family: 'Open Sans', Arial, sans-serif;
-  background-color: #FFF9E6;
+  background-color: #FEF9EF;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .sort-select:hover, .sort-select:focus {
-  border-color: #FFC107;
-  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+  border-color: #FEE440;
+  box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
   outline: none;
 }
 
@@ -632,12 +671,13 @@ button.orange {
 }
 
 .product-card {
-  background-color: #FFFFFF;
-  border: 1px solid #F5F5F5;
+  background: rgba(255, 134, 94, 0.5);
+  border: 2px solid #FFFFFF;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
   transition: transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product-card:hover {
@@ -692,8 +732,8 @@ button.orange {
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #FF0000;
-  color: #FFFFFF;
+  background-color: #FEE440;
+  color: #4A4A4A;
   font-size: 12px;
   font-weight: 700;
   width: 20px;
@@ -710,27 +750,18 @@ button.orange {
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: 700;
   font-size: 40px;
-  background: linear-gradient(90deg, #FFC107, #FF6200);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #FF865E;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   line-height: 1.2;
   letter-spacing: 2px;
-  animation: gradientText 3s ease infinite, pulse 2s ease infinite;
+  animation: pulse 2s ease infinite;
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
+  text-decoration: none;
 }
 
 .playsummer-title:hover {
   transform: scale(1.05);
   letter-spacing: 3px;
-}
-
-@keyframes gradientText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 @keyframes pulse {
@@ -739,26 +770,31 @@ button.orange {
   100% { transform: scale(1); }
 }
 
-/* Specific styles for Products button */
-.products-btn {
+/* Specific styles for Products link */
+.products-link {
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: #FFFFFF;
+  color: #FF865E;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.products-btn:hover {
-  background-color: #FFC107;
-  color: #000000;
+.products-link:hover {
+  background-color: #FEF9EF;
+  color: #FF865E;
+}
+
+.products-link.active {
+  box-shadow: 0 0 8px rgba(254, 228, 64, 0.5);
 }
 
 /* Add to Cart button styles */
 .add-to-cart-btn:active {
   transform: scale(0.95);
-  background-color: #E55700;
+  background-color: #FEE440;
   transition: all 0.3s ease-in-out;
 }
 
@@ -809,6 +845,24 @@ button.orange {
   .admin-nav {
     flex-direction: row;
     gap: 20px;
+    justify-content: center;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+  }
+  .navbar-left {
+    margin-left: 0;
+  }
+  .navbar-center {
+    text-align: center;
+    flex-direction: column;
+  }
+  .playsummer-link {
+    flex-direction: column;
+  }
+  .icon-container {
     justify-content: center;
   }
 }

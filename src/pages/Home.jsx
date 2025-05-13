@@ -30,9 +30,6 @@ const Home = ({ addToCart }) => {
       <div className="hero-section">
         <h1 className="hero-title">Welcome to PlaySummer!</h1>
         <p className="hero-subtitle">Discover the Best Summer Toys for Endless Fun!</p>
-        <Link to="/products">
-          <button className="hero-cta">Shop Now</button>
-        </Link>
       </div>
 
       {/* แสดงสินค้า New Arrival */}
