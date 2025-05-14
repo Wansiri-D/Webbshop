@@ -15,8 +15,8 @@ const Home = ({ addToCart }) => {
           ...doc.data(),
           docId: doc.id // เก็บ docId เพื่อใช้ในการแก้ไข/ลบในอนาคต
         }));
-        // กรองเฉพาะสินค้าที่เป็น New Arrival (สมมติว่าเราจะแสดง 3 รายการล่าสุด)
-        setNewProducts(productsList.slice(-3));
+        // กรองเฉพาะสินค้าที่เป็น New Arrival (แสดง 4 รายการล่าสุด)
+        setNewProducts(productsList.slice(-4));
       } catch (e) {
         console.error("Error fetching products: ", e);
       }
