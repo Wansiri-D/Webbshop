@@ -57,8 +57,27 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
               const itemTotalPrice = (item.price || 0) * (item.quantity || 0);
 
               return (
-                <div key={uniqueKey} className="cart-item">
-                  <div className="cart-item-details">
+                <div 
+                  key={uniqueKey} 
+                  className="cart-item"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '2rem', // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
+                    marginBottom: '1rem',
+                  }}
+                >
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.name || 'Product Image'} 
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      objectFit: 'cover',
+                      borderRadius: '0.25rem',
+                    }} 
+                  />
+                  <div className="cart-item-details" style={{ flex: 1 }}>
                     <h2>{item.name || 'Unknown Product'}</h2>
                     <p className="promotional-header">
                       {(item.price || 0)} SEK
@@ -95,15 +114,54 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
               );
             })}
           </div>
-          <div className="cart-checkout bg-orange-100 p-4 rounded-lg shadow-md flex flex-col items-center gap-2 mt-4 mb-4">
-            <p className="text-sm font-medium text-orange-800">
+          <div 
+            style={{
+              backgroundColor: '#ffedd5', // สีครีม
+              padding: '1.25rem',
+              borderRadius: '0.5rem',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.25rem', // เพิ่มระยะห่างระหว่างบรรทัด
+              marginTop: '1.5rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            <p 
+              style={{
+                color: '#c2410c', // สีส้มเข้ม
+                fontSize: '1.5rem', // ขนาดใหญ่ขึ้น
+                fontWeight: 500,
+              }}
+            >
               Total Items: {totalItems}
             </p>
-            <p className="text-base font-medium text-orange-800">
+            <p 
+              style={{
+                color: '#c2410c', // สีส้มเข้ม
+                fontSize: '1.75rem', // ขนาดใหญ่ขึ้น
+                fontWeight: 500,
+              }}
+            >
               Total Price: {totalPrice.toFixed(2)} SEK
             </p>
             <button 
-              className="checkout-btn bg-green-500 text-white px-4 py-1 rounded hover:bg-orange-100 hover:text-orange-800 transition"
+              style={{
+                backgroundColor: '#10b981', // สีเขียว
+                color: 'white',
+                padding: '0.75rem 2rem',
+                borderRadius: '0.25rem',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'scale(1.1)';
+                e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'scale(1)';
+                e.target.style.boxShadow = 'none';
+              }}
               onClick={onCheckoutClick}
             >
               Checkout
