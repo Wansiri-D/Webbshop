@@ -72,7 +72,7 @@ const EditProducts = ({ setNotification }) => {
     name: '',
     price: '',
     description: '',
-    imageUrl: '', // เพิ่ม imageUrl ใน state
+    imageUrl: '',
   });
   const [loading, setLoading] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -88,8 +88,13 @@ const EditProducts = ({ setNotification }) => {
         }));
         setProducts(productsList);
       } catch (e) {
-        setNotification('Failed to fetch products.');
+        setNotification('Sorry, we couldn\'t load the products. Please try again later. 😓');
         console.error("Error fetching products: ", e);
+        if (e.code === 'permission-denied') {
+          setNotification('It seems you don\'t have permission to view products. Please check Firebase settings or contact support. 🙏');
+        } else if (e.code === 'unavailable') {
+          setNotification('Oh no! It looks like your network is unavailable. Please check your internet connection and try again. 📶');
+        }
       }
     };
     fetchProducts();
@@ -101,7 +106,7 @@ const EditProducts = ({ setNotification }) => {
       name: product.name,
       price: product.price,
       description: product.description,
-      imageUrl: product.imageUrl, // เพิ่ม imageUrl ใน state
+      imageUrl: product.imageUrl,
     });
   };
 
@@ -113,9 +118,21 @@ const EditProducts = ({ setNotification }) => {
     }));
   };
 
+  const validateImageUrl = (url) => {
+    if (!url) return true;
+    const imageExtensions = /\.(jpg|jpeg|png|gif)$/i;
+    return imageExtensions.test(url);
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!validateImageUrl(updatedProduct.imageUrl)) {
+      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+      setLoading(false);
+      return;
+    }
 
     try {
       const productRef = doc(db, "products", editingProduct.docId);
@@ -123,21 +140,26 @@ const EditProducts = ({ setNotification }) => {
         name: updatedProduct.name,
         price: parseFloat(updatedProduct.price),
         description: updatedProduct.description,
-        imageUrl: updatedProduct.imageUrl, // ใช้ URL รูปภาพที่กรอกมา
+        imageUrl: updatedProduct.imageUrl || editingProduct.imageUrl,
         updatedAt: new Date().toISOString(),
       });
 
       setProducts(products.map(p => 
         p.docId === editingProduct.docId 
-          ? { ...p, ...updatedProduct, price: parseFloat(updatedProduct.price) } 
+          ? { ...p, ...updatedProduct, price: parseFloat(updatedProduct.price), imageUrl: updatedProduct.imageUrl || editingProduct.imageUrl } 
           : p
       ));
 
-      setNotification('Product updated successfully!');
+      setNotification('Yay! Your product has been updated successfully! 🎉');
       setEditingProduct(null);
     } catch (e) {
-      setNotification(e.message || 'Failed to update product.');
+      setNotification(e.message || 'Sorry, we couldn\'t update the product. Please try again later. 😓');
       console.error("Error updating product: ", e);
+      if (e.code === 'permission-denied') {
+        setNotification('It seems you don\'t have permission to update this product. Please check Firebase settings or contact support. 🙏');
+      } else if (e.code === 'unavailable') {
+        setNotification('Oh no! It looks like your network is unavailable. Please check your internet connection and try again. 📶');
+      }
     } finally {
       setLoading(false);
     }
@@ -151,10 +173,15 @@ const EditProducts = ({ setNotification }) => {
       await deleteDoc(productRef);
 
       setProducts(products.filter(p => p.docId !== productToDelete.docId));
-      setNotification('Product deleted successfully!');
+      setNotification('Product deleted successfully! 🗑️');
     } catch (e) {
-      setNotification(e.message || 'Failed to delete product.');
+      setNotification(e.message || 'Sorry, we couldn\'t delete the product. Please try again later. 😓');
       console.error("Error deleting product: ", e);
+      if (e.code === 'permission-denied') {
+        setNotification('It seems you don\'t have permission to delete this product. Please check Firebase settings or contact support. 🙏');
+      } else if (e.code === 'unavailable') {
+        setNotification('Oh no! It looks like your network is unavailable. Please check your internet connection and try again. 📶');
+      }
     } finally {
       setLoading(false);
       setShowConfirmModal(false);

@@ -8,7 +8,7 @@ const AddProduct = ({ setNotification }) => {
     price: '',
     description: '',
   });
-  const [imageUrl, setImageUrl] = useState(''); // เพิ่ม state สำหรับเก็บ URL รูปภาพ
+  const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState('');
 
@@ -26,8 +26,20 @@ const AddProduct = ({ setNotification }) => {
     setProgress('');
   };
 
+  const validateImageUrl = (url) => {
+    const imageExtensions = /\.(jpg|jpeg|png|gif)$/i;
+    return imageExtensions.test(url);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ตรวจสอบ URL รูปภาพเมื่อกดปุ่ม Add Product
+    if (!validateImageUrl(imageUrl)) {
+      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+      return;
+    }
+
     setLoading(true);
     setProgress('Saving product...');
 
@@ -37,23 +49,23 @@ const AddProduct = ({ setNotification }) => {
         name: product.name,
         price: parseFloat(product.price),
         description: product.description,
-        imageUrl: imageUrl, // ใช้ URL รูปภาพที่กรอกมา
+        imageUrl: imageUrl,
         createdAt: new Date().toISOString(),
       });
       console.log('Product added successfully with ID:', docRef.id);
 
-      setNotification('Product added successfully!');
+      setNotification('Yay! Your product has been added successfully! 🎉');
       setProduct({ name: '', price: '', description: '' });
-      setImageUrl(''); // รีเซ็ต URL รูปภาพ
+      setImageUrl('');
       setProgress('');
     } catch (e) {
-      const errorMessage = e.message || 'Failed to add product. Please try again.';
+      const errorMessage = e.message || 'Sorry, we couldn\'t add the product. Please try again later. 😓';
       setNotification(errorMessage);
       console.error("Error adding product: ", e);
       if (e.code === 'permission-denied') {
-        setNotification('Permission denied. Please check Firebase Security Rules.');
+        setNotification('It seems you don\'t have permission to add this product. Please check Firebase settings or contact support. 🙏');
       } else if (e.code === 'unavailable') {
-        setNotification('Network unavailable. Please check your internet connection.');
+        setNotification('Oh no! It looks like your network is unavailable. Please check your internet connection and try again. 📶');
       }
       setProgress('');
     } finally {
