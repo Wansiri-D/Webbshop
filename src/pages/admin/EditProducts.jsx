@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { db, storage } from '../../firebase';
+import { db } from '../../firebase';
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
-// คอมโพเนนต์ ConfirmModal สำหรับยืนยันการลบ
 const ConfirmModal = ({ message, onConfirm, onCancel }) => {
   if (!message) return null;
 
@@ -74,13 +72,12 @@ const EditProducts = ({ setNotification }) => {
     name: '',
     price: '',
     description: '',
+    imageUrl: '', // เพิ่ม imageUrl ใน state
   });
-  const [newImage, setNewImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
 
-  // ดึงข้อมูลสินค้าจาก Firestore
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -104,8 +101,8 @@ const EditProducts = ({ setNotification }) => {
       name: product.name,
       price: product.price,
       description: product.description,
+      imageUrl: product.imageUrl, // เพิ่ม imageUrl ใน state
     });
-    setNewImage(null);
   };
 
   const handleInputChange = (e) => {
@@ -116,59 +113,28 @@ const EditProducts = ({ setNotification }) => {
     }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        setNotification('Please select an image file (e.g., JPEG, PNG).');
-        setNewImage(null);
-        return;
-      }
-      if (file.size > 2 * 1024 * 1024) {
-        setNotification('Image size must be less than 2MB.');
-        setNewImage(null);
-        return;
-      }
-      setNewImage(file);
-    }
-  };
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      let imageUrl = editingProduct.imageUrl;
-
-      if (newImage) {
-        const oldImageRef = ref(storage, editingProduct.imageUrl);
-        await deleteObject(oldImageRef).catch((e) => {
-          console.warn("Failed to delete old image:", e);
-        });
-
-        const newImageRef = ref(storage, `products/${Date.now()}_${newImage.name}`);
-        await uploadBytes(newImageRef, newImage);
-        imageUrl = await getDownloadURL(newImageRef);
-      }
-
       const productRef = doc(db, "products", editingProduct.docId);
       await updateDoc(productRef, {
         name: updatedProduct.name,
         price: parseFloat(updatedProduct.price),
         description: updatedProduct.description,
-        imageUrl: imageUrl,
+        imageUrl: updatedProduct.imageUrl, // ใช้ URL รูปภาพที่กรอกมา
         updatedAt: new Date().toISOString(),
       });
 
       setProducts(products.map(p => 
         p.docId === editingProduct.docId 
-          ? { ...p, ...updatedProduct, imageUrl, price: parseFloat(updatedProduct.price) } 
+          ? { ...p, ...updatedProduct, price: parseFloat(updatedProduct.price) } 
           : p
       ));
 
       setNotification('Product updated successfully!');
       setEditingProduct(null);
-      setNewImage(null);
     } catch (e) {
       setNotification(e.message || 'Failed to update product.');
       console.error("Error updating product: ", e);
@@ -181,11 +147,6 @@ const EditProducts = ({ setNotification }) => {
     setLoading(true);
 
     try {
-      const imageRef = ref(storage, productToDelete.imageUrl);
-      await deleteObject(imageRef).catch((e) => {
-        console.warn("Failed to delete image:", e);
-      });
-
       const productRef = doc(db, "products", productToDelete.docId);
       await deleteDoc(productRef);
 
@@ -254,12 +215,14 @@ const EditProducts = ({ setNotification }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="image">New Product Image (Max 2MB, optional):</label>
+              <label htmlFor="imageUrl">Product Image URL (optional):</label>
               <input
-                type="file"
-                id="image"
-                accept="image/*"
-                onChange={handleImageChange}
+                type="url"
+                id="imageUrl"
+                name="imageUrl"
+                value={updatedProduct.imageUrl}
+                onChange={handleInputChange}
+                placeholder="https://example.com/image.jpg"
               />
               <p>Current Image: <a href={editingProduct.imageUrl} target="_blank" rel="noopener noreferrer">View Image</a></p>
             </div>
@@ -330,7 +293,6 @@ const EditProducts = ({ setNotification }) => {
         </>
       )}
 
-      {/* แสดง Modal สำหรับยืนยันการลบ */}
       <ConfirmModal
         message={productToDelete ? `Are you sure you want to delete ${productToDelete.name}?` : null}
         onConfirm={handleDelete}
