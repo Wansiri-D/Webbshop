@@ -24,6 +24,11 @@ const Home = ({ addToCart }) => {
     fetchProducts();
   }, []);
 
+  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="home-container">
       {/* Hero Section */}
@@ -49,11 +54,6 @@ const Home = ({ addToCart }) => {
                 <div className="new-arrival-details">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>
-                  <Link to={`/products/${product.docId}`}>
-                    <button className="orange read-more-btn">
-                      Read More
-                    </button>
-                  </Link>
                 </div>
               </>
             ) : (
@@ -61,11 +61,6 @@ const Home = ({ addToCart }) => {
                 <div className="new-arrival-details">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>
-                  <Link to={`/products/${product.docId}`}>
-                    <button className="orange read-more-btn">
-                      Read More
-                    </button>
-                  </Link>
                 </div>
                 <div className="new-arrival-image-container">
                   <img
@@ -82,6 +77,20 @@ const Home = ({ addToCart }) => {
       ) : (
         <p>Loading products...</p>
       )}
+
+      {/* ปุ่ม More Products */}
+      <div className="view-more-container">
+        <Link to="/products">
+          <button className="view-more-btn">More Products</button>
+        </Link>
+      </div>
+
+      {/* ปุ่ม Back to Top */}
+      <div className="back-to-top-container">
+        <button onClick={scrollToTop} className="back-to-top-btn">
+          Back to Top <span className="back-to-top-arrow">↑</span>
+        </button>
+      </div>
     </div>
   );
 };

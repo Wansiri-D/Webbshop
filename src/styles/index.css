@@ -180,25 +180,6 @@ button.orange {
   font-size: 20px;
 }
 
-.read-more-btn {
-  background-color: #FF865E;
-  padding: 12px 24px;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.read-more-btn:hover {
-  background-color: #FEF9EF;
-  color: #FF865E;
-  transform: scale(1.05);
-}
-
-.read-more-btn:active {
-  background-color: #FEF9EF;
-  color: #FF865E;
-  transform: scale(0.95);
-}
-
 /* Cart Page styles */
 .cart-page {
   max-width: 1200px;
@@ -249,7 +230,7 @@ button.orange {
   padding: 10px 14px;
   border-radius: 4px;
   font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ปรับ transition เพื่อรองรับ transform และ box-shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .quantity {
@@ -264,12 +245,12 @@ button.orange {
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ปรับ transition เพื่อรองรับ transform และ box-shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cart-checkout {
   display: flex;
-  justify-content: center; /* เปลี่ยนจาก flex-end เป็น center เพื่อให้อยู่กึ่งกลาง */
+  justify-content: center;
 }
 
 .checkout-btn {
@@ -438,17 +419,16 @@ button.orange {
 }
 
 .submit-btn {
-  background-color: #FF865E;
+  background-color: #28A745;
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 8px;
   font-size: 20px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   align-self: center;
 }
 
 .submit-btn:hover {
-  background-color: #FEE440;
   transform: scale(1.05);
 }
 
@@ -459,17 +439,16 @@ button.orange {
 }
 
 .cancel-btn {
-  background-color: #FF865E;
+  background-color: #DC3545;
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 8px;
   font-size: 20px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   margin-left: 10px;
 }
 
 .cancel-btn:hover {
-  background-color: #FEE440;
   transform: scale(1.05);
 }
 
@@ -508,7 +487,6 @@ button.orange {
 
 .products-table td {
   background-color: #FFFFFF;
-  height: 66px;
 }
 
 .product-image-small {
@@ -525,33 +503,33 @@ button.orange {
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  height: 100%;
+  min-height: 50px;
 }
 
 .edit-btn {
-  background-color: #FF865E;
+  background-color: #28A745;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .edit-btn:hover {
-  background-color: #FEE440;
+  transform: scale(1.1);
 }
 
 .delete-btn {
-  background-color: #FF865E;
+  background-color: #DC3545;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: #FEE440;
+  transform: scale(1.1);
 }
 
 .edit-form {
@@ -874,6 +852,55 @@ button.orange {
   box-shadow: 0 0 8px rgba(254, 228, 64, 0.5);
 }
 
+/* View More and Back to Top styles */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.view-more-btn {
+  background-color: #FF865E;
+  color: #FFFFFF;
+  padding: 12px 48px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.view-more-btn:hover {
+  transform: scale(1.05);
+}
+
+.back-to-top-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 40px;
+}
+
+.back-to-top-btn {
+  background-color: #FEF9EF;
+  color: #FF865E;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none; /* ลบกรอบออก */
+}
+
+.back-to-top-btn:hover {
+  transform: scale(1.1); /* ขยายข้อความเมื่อ hover */
+}
+
+.back-to-top-arrow {
+  color: #FF865E;
+  font-size: 18px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 639px) {
   .products-controls {
@@ -940,6 +967,27 @@ button.orange {
   }
   .icon-container {
     justify-content: center;
+  }
+  .products-table td {
+    display: block;
+    text-align: center;
+  }
+  .products-table tr {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .products-table th {
+    display: none;
+  }
+  .products-table td {
+    padding: 8px;
+  }
+  .action-buttons {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .product-image-small {
+    margin: 0 auto;
   }
 }
 

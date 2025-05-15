@@ -66,6 +66,11 @@ const Products = ({ addToCart }) => {
     setSortOption(e.target.value);
   };
 
+  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="products-page">
       <h1>Summer Toys</h1>
@@ -90,6 +95,13 @@ const Products = ({ addToCart }) => {
       ) : (
         <p>Loading products...</p>
       )}
+
+      {/* ปุ่ม Back to Top */}
+      <div className="back-to-top-container">
+        <button onClick={scrollToTop} className="back-to-top-btn">
+          Back to Top <span className="back-to-top-arrow">↑</span>
+        </button>
+      </div>
     </div>
   );
 };
