@@ -50,6 +50,9 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
         <>
           <div className="cart-items">
             {validCartItems.map((item, index) => {
+              // ดีบัก: ตรวจสอบค่า quantity ของแต่ละรายการ
+              console.log(`Item ${item.name || 'Unknown Product'} quantity:`, item.quantity);
+
               // ใช้ docId เป็น key แต่เพิ่ม index เพื่อป้องกันการซ้ำ
               const uniqueKey = `${item.docId}-${index}`;
 
@@ -61,10 +64,10 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
                   key={uniqueKey} 
                   className="cart-item"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '2rem', // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
-                    marginBottom: '1rem',
+                    display: 'flex !important',
+                    alignItems: 'center !important',
+                    gap: '5rem !important', // เพิ่มระยะห่างระหว่างรูปภาพและชื่อ/ราคา
+                    marginBottom: '1rem !important',
                   }}
                 >
                   <img 
@@ -77,7 +80,7 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
                       borderRadius: '0.25rem',
                     }} 
                   />
-                  <div className="cart-item-details" style={{ flex: 1 }}>
+                  <div className="cart-item-details" style={{ flex: '1 !important' }}>
                     <h2>{item.name || 'Unknown Product'}</h2>
                     <p className="promotional-header">
                       {(item.price || 0)} SEK
@@ -93,6 +96,21 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
                       className="quantity-btn"
                       onClick={() => updateQuantity(item.docId, -1)}
                       disabled={(item.quantity || 0) <= 1}
+                      style={{
+                        padding: '0.5rem 1rem !important',
+                        borderRadius: '0.25rem',
+                        transition: 'all 0.3s !important',
+                        backgroundColor: '#FF865E !important',
+                        color: '#FFFFFF !important',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.transform = 'scale(1.2)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.transform = 'scale(1)';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     >
                       -
                     </button>
@@ -100,12 +118,42 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
                     <button
                       className="quantity-btn"
                       onClick={() => updateQuantity(item.docId, 1)}
+                      style={{
+                        padding: '0.5rem 1rem !important',
+                        borderRadius: '0.25rem',
+                        transition: 'all 0.3s !important',
+                        backgroundColor: '#FF865E !important',
+                        color: '#FFFFFF !important',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.transform = 'scale(1.1)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.transform = 'scale(1)';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     >
                       +
                     </button>
                     <button
                       className="remove-btn"
                       onClick={() => removeFromCart(item.docId)}
+                      style={{
+                        padding: '0.5rem 1rem !important',
+                        borderRadius: '0.25rem',
+                        transition: 'all 0.3s !important',
+                        backgroundColor: '#FF865E !important',
+                        color: '#FFFFFF !important',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.transform = 'scale(1.1)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.transform = 'scale(1)';
+                        e.target.style.boxShadow = 'none';
+                      }}
                     >
                       Remove
                     </button>
@@ -116,22 +164,27 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
           </div>
           <div 
             style={{
-              backgroundColor: '#ffedd5', // สีครีม
-              padding: '1.25rem',
-              borderRadius: '0.5rem',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1.25rem', // เพิ่มระยะห่างระหว่างบรรทัด
-              marginTop: '1.5rem',
-              marginBottom: '1.5rem',
+              backgroundColor: '#ffedd5 !important',
+              padding: '1.25rem !important',
+              borderRadius: '0.5rem !important',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1) !important',
+              display: 'flex !important',
+              flexDirection: 'column !important',
+              alignItems: 'center !important',
+              justifyContent: 'center !important',
+              gap: '1.25rem !important',
+              marginTop: '1.5rem !important',
+              marginBottom: '1.5rem !important',
+              margin: '0 auto !important', // จัดกึ่งกลางในแนวนอน
+              textAlign: 'center !important',
+              width: '100% !important', // ให้ความกว้างครอบคลุม container
+              maxWidth: '600px !important', // จำกัดความกว้างสูงสุดเพื่อให้สมดุล
             }}
           >
             <p 
               style={{
-                color: '#c2410c', // สีส้มเข้ม
-                fontSize: '1.5rem', // ขนาดใหญ่ขึ้น
+                color: '#c2410c',
+                fontSize: '1.25rem',
                 fontWeight: 500,
               }}
             >
@@ -139,16 +192,16 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
             </p>
             <p 
               style={{
-                color: '#c2410c', // สีส้มเข้ม
-                fontSize: '1.75rem', // ขนาดใหญ่ขึ้น
+                color: '#c2410c',
+                fontSize: '1.5rem',
                 fontWeight: 500,
               }}
             >
-              Total Price: {totalPrice.toFixed(2)} SEK
+              Total: {totalPrice.toFixed(2)} SEK
             </p>
             <button 
               style={{
-                backgroundColor: '#10b981', // สีเขียว
+                backgroundColor: '#10b981',
                 color: 'white',
                 padding: '0.75rem 2rem',
                 borderRadius: '0.25rem',

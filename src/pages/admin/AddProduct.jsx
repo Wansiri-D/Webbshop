@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { db, storage } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-const AddProduct = () => {
+const AddProduct = ({ setNotification }) => {
   const [product, setProduct] = useState({
     name: '',
     price: '',
@@ -12,8 +12,9 @@ const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState('');
-  const [success, setSuccess] = useState('');
-  const [error, setError] = useState('');
+
+  // ใช้ useRef เพื่อเข้าถึง input file
+  const imageInputRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,8 +22,6 @@ const AddProduct = () => {
       ...prev,
       [name]: value,
     }));
-    setError('');
-    setSuccess('');
     setProgress('');
   };
 
@@ -30,18 +29,16 @@ const AddProduct = () => {
     const file = e.target.files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
-        setError('Please select an image file (e.g., JPEG, PNG).');
+        setNotification('Please select an image file (e.g., JPEG, PNG).');
         setImage(null);
         return;
       }
       if (file.size > 2 * 1024 * 1024) {
-        setError('Image size must be less than 2MB.');
+        setNotification('Image size must be less than 2MB.');
         setImage(null);
         return;
       }
       setImage(file);
-      setError('');
-      setSuccess('');
       setProgress('');
     }
   };
@@ -49,8 +46,6 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess('');
-    setError('');
     setProgress('Uploading image...');
 
     try {
@@ -74,21 +69,24 @@ const AddProduct = () => {
       });
       console.log('Product added successfully with ID:', docRef.id);
 
-      setSuccess('Product added successfully!');
+      setNotification('Product added successfully!');
       setProduct({ name: '', price: '', description: '' });
       setImage(null);
-      document.getElementById('image').value = '';
+      // รีเซ็ต input file ด้วย useRef แทนการใช้ DOM Manipulation
+      if (imageInputRef.current) {
+        imageInputRef.current.value = '';
+      }
       setProgress('');
     } catch (e) {
       const errorMessage = e.message || 'Failed to add product. Please try again.';
-      setError(errorMessage);
+      setNotification(errorMessage);
       console.error("Error adding product: ", e);
       if (e.code === 'permission-denied') {
-        setError('Permission denied. Please check Firebase Security Rules.');
+        setNotification('Permission denied. Please check Firebase Security Rules.');
       } else if (e.code === 'storage/unauthorized') {
-        setError('Unauthorized access to Storage. Please check Storage Rules.');
+        setNotification('Unauthorized access to Storage. Please check Storage Rules.');
       } else if (e.code === 'unavailable') {
-        setError('Network unavailable. Please check your internet connection.');
+        setNotification('Network unavailable. Please check your internet connection.');
       }
       setProgress('');
     } finally {
@@ -142,14 +140,13 @@ const AddProduct = () => {
             accept="image/*"
             onChange={handleImageChange}
             required
+            ref={imageInputRef} // ใช้ ref เพื่อเข้าถึง input
           />
         </div>
         <button type="submit" className="submit-btn" disabled={loading || !image}>
           {loading ? 'Adding Product...' : 'Add Product'}
         </button>
         {progress && <p className="progress">{progress}</p>}
-        {success && <p className="success">{success}</p>}
-        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );

@@ -249,11 +249,7 @@ button.orange {
   padding: 10px 14px;
   border-radius: 4px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.quantity-btn:hover {
-  background-color: #FEE440;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ปรับ transition เพื่อรองรับ transform และ box-shadow */
 }
 
 .quantity {
@@ -268,16 +264,12 @@ button.orange {
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.remove-btn:hover {
-  background-color: #FEE440;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ปรับ transition เพื่อรองรับ transform และ box-shadow */
 }
 
 .cart-checkout {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* เปลี่ยนจาก flex-end เป็น center เพื่อให้อยู่กึ่งกลาง */
 }
 
 .checkout-btn {
@@ -745,7 +737,7 @@ button.orange {
 }
 
 .product-card p.price {
-  font-size: 72px; /* ปรับจาก 48px เป็น 72px (เพิ่ม 2 เท่า) */
+  font-size: 72px;
   font-weight: 700;
   color: #FF865E;
   margin-bottom: 14.4px;
