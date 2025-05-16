@@ -889,11 +889,11 @@ button.orange {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: none; /* ลบกรอบออก */
+  border: none;
 }
 
 .back-to-top-btn:hover {
-  transform: scale(1.1); /* ขยายข้อความเมื่อ hover */
+  transform: scale(1.1);
 }
 
 .back-to-top-arrow {
