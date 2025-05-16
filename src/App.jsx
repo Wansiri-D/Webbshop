@@ -60,22 +60,19 @@ const NotificationModal = ({ message, onClose }) => {
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [isAdmin, setIsAdmin] = useState(false); // เพิ่ม state เพื่อตรวจสอบว่าเป็นแอดมินหรือไม่
-  const [notification, setNotification] = useState(null); // เพิ่ม state สำหรับแจ้งเตือน
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [notification, setNotification] = useState(null);
   const navigate = useNavigate();
 
   const addToCart = (product) => {
-    // ดีบัก: ตรวจสอบข้อมูล product ที่ส่งเข้ามา
     console.log('Adding to cart:', product);
 
-    // ตรวจสอบว่า product มี docId หรือไม่
     if (!product.docId) {
       console.error('Product does not have a docId:', product);
       setNotification('Sorry, we couldn\'t add the product to cart. Please try again. 😓');
       return;
     }
 
-    // อัพเดต cartItems โดยใช้ functional update เพื่อให้แน่ใจว่าอัพเดตจาก state ล่าสุด
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.docId === product.docId);
       let updatedItems;
@@ -87,7 +84,6 @@ const App = () => {
         updatedItems = [...prevItems, { ...product, quantity: 1 }];
       }
 
-      // ดีบัก: ตรวจสอบ docId ซ้ำใน cartItems
       const docIds = updatedItems.map(item => item.docId);
       const hasDuplicateDocIds = new Set(docIds).size !== docIds.length;
       if (hasDuplicateDocIds) {
@@ -95,7 +91,7 @@ const App = () => {
       }
 
       console.log('Updated cartItems:', updatedItems);
-      setNotification('Yay! Product added to cart successfully! 🎉');
+      // ลบการแจ้งเตือนออก
       return updatedItems;
     });
   };
@@ -104,7 +100,7 @@ const App = () => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((item) => item.docId !== itemDocId);
       console.log('Updated cartItems after remove:', updatedItems);
-      setNotification('Product removed from cart successfully! 🗑️');
+      // ลบการแจ้งเตือนออก
       return updatedItems;
     });
   };
@@ -125,10 +121,9 @@ const App = () => {
     console.log('handleCheckout called at:', new Date().toISOString());
     navigate('/order');
     setCartItems([]);
-    setNotification('Checkout successful! Your order has been placed. 🎉');
+    // ลบการแจ้งเตือนออก
   };
 
-  // ดีบัก: ตรวจสอบ cartItems หลังจากการอัพเดต state
   useEffect(() => {
     if (cartItems.length > 0) {
       const docIds = cartItems.map(item => item.docId);
@@ -142,7 +137,6 @@ const App = () => {
 
   const totalCartItems = cartItems.reduce((total, item) => total + (item.quantity || 0), 0);
 
-  // ฟังก์ชันสำหรับปิด Modal
   const closeNotification = () => {
     setNotification(null);
   };

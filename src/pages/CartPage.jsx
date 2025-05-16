@@ -41,6 +41,11 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
     }
   };
 
+  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="cart-page">
       <h1>Your Cart</h1>
@@ -175,10 +180,10 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
               gap: '1.25rem !important',
               marginTop: '1.5rem !important',
               marginBottom: '1.5rem !important',
-              margin: '0 auto !important', // จัดกึ่งกลางในแนวนอน
+              margin: '0 auto !important',
               textAlign: 'center !important',
-              width: '100% !important', // ให้ความกว้างครอบคลุม container
-              maxWidth: '600px !important', // จำกัดความกว้างสูงสุดเพื่อให้สมดุล
+              width: '100% !important',
+              maxWidth: '600px !important',
             }}
           >
             <p 
@@ -222,6 +227,13 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, handleCheckout })
           </div>
         </>
       )}
+
+      {/* เพิ่มปุ่ม Back to Top กลับมา */}
+      <div className="back-to-top-container">
+        <button onClick={scrollToTop} className="back-to-top-btn">
+          Back to Top <span className="back-to-top-arrow">↑</span>
+        </button>
+      </div>
     </div>
   );
 };

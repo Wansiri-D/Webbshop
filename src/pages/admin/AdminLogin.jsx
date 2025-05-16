@@ -19,7 +19,7 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
 
     if (username === adminCredentials.username && password === adminCredentials.password) {
       setIsAdmin(true);
-      setNotification('Welcome, Admin! You have logged in successfully. 🎉');
+      setNotification('Welcome admin!');
       navigate('/admin');
     } else {
       setNotification('Oops! Incorrect username or password. Please try again. 😓');
@@ -30,9 +30,9 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
 
   return (
     <div className="admin-page">
-      <h1>Admin Login</h1>
+      <h1 style={{ textAlign: 'center' }}>Admin Login</h1>
       <form onSubmit={handleLogin} className="admin-form">
-        <div className="form-group">
+        <div className="form-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -40,9 +40,10 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            style={{ maxWidth: '300px' }}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -50,6 +51,7 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={{ maxWidth: '300px' }}
           />
         </div>
         <button type="submit" className="submit-btn" disabled={loading}>

@@ -10,7 +10,6 @@ const Products = ({ addToCart }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortOption, setSortOption] = useState('default');
 
-  // ดึงข้อมูลสินค้าจาก Firestore
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -28,7 +27,6 @@ const Products = ({ addToCart }) => {
     fetchProducts();
   }, []);
 
-  // ค้นหาเมื่อ searchTerm เปลี่ยน
   useEffect(() => {
     if (searchTerm.trim() === '') {
       setFilteredProducts(products);
@@ -43,7 +41,6 @@ const Products = ({ addToCart }) => {
     }
   }, [searchTerm, products]);
 
-  // เรียงลำดับเมื่อ sortOption เปลี่ยน
   useEffect(() => {
     let sortedProducts = [...filteredProducts];
     if (sortOption === 'name-asc') {
@@ -66,7 +63,6 @@ const Products = ({ addToCart }) => {
     setSortOption(e.target.value);
   };
 
-  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -96,7 +92,6 @@ const Products = ({ addToCart }) => {
         <p>Loading products...</p>
       )}
 
-      {/* ปุ่ม Back to Top */}
       <div className="back-to-top-container">
         <button onClick={scrollToTop} className="back-to-top-btn">
           Back to Top <span className="back-to-top-arrow">↑</span>

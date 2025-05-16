@@ -382,12 +382,14 @@ button.orange {
   gap: 25px;
   max-width: 700px;
   margin: 0 auto;
+  /* ลบ align-items: center เพื่อให้ฟอร์มกลับไปมีขนาดและตำแหน่งเท่าเดิม */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  /* ลบ width: 100% และ align-items: center เพื่อให้ฟอร์มกลับไปมีขนาดและตำแหน่งเท่าเดิม */
 }
 
 .form-group label {
@@ -507,7 +509,7 @@ button.orange {
 }
 
 .edit-btn {
-  background-color: #28A745;
+  background-color: #FFAB91;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
@@ -520,7 +522,7 @@ button.orange {
 }
 
 .delete-btn {
-  background-color: #DC3545;
+  background-color: #FF5722;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;

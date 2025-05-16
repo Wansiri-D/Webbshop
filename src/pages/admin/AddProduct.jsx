@@ -34,7 +34,7 @@ const AddProduct = ({ setNotification }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ตรวจสอบ URL รูปภาพเมื่อกดปุ่ม Add Product
+    // ตรวจสอบ URL รูปภาพ
     if (!validateImageUrl(imageUrl)) {
       setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
       return;
