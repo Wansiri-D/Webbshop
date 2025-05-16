@@ -199,6 +199,11 @@ const EditProducts = ({ setNotification }) => {
     setProductToDelete(null);
   };
 
+  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="admin-page">
       <h1>Edit Products</h1>
@@ -325,6 +330,13 @@ const EditProducts = ({ setNotification }) => {
         onConfirm={handleDelete}
         onCancel={cancelDelete}
       />
+
+      {/* เพิ่มปุ่ม Back to Top */}
+      <div className="back-to-top-container">
+        <button onClick={scrollToTop} className="back-to-top-btn">
+          Back to Top <span className="back-to-top-arrow">↑</span>
+        </button>
+      </div>
     </div>
   );
 };
