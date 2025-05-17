@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 // Fallback images ในกรณีที่ไฟล์ PNG โหลดไม่สำเร็จ
-const fallbackSunIcon = 'https://via.placeholder.com/80?text=Sun';
-const fallbackCartIcon = 'https://via.placeholder.com/42?text=Cart';
-const fallbackAdminIcon = 'https://via.placeholder.com/42?text=Admin';
+const fallbackSunIcon = 'https://i.postimg.cc/hPC83z9L/sun.png'; // หรือลิงก์ CDN อื่น
+const fallbackCartIcon = 'https://placehold.co/42x42?text=Cart';
+const fallbackAdminIcon = 'https://placehold.co/42x42?text=Admin';
 
 const Header = ({ cartCount }) => {
   return (
