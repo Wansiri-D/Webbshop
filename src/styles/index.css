@@ -50,6 +50,11 @@ p {
   color: #666666;
 }
 
+/* เพิ่มสไตล์สำหรับคำต้อนรับ */
+.welcome-text {
+  font-size: 16px; /* เพิ่มขนาดจาก 14px เป็น 16px */
+}
+
 button {
   font-weight: 600;
   font-size: 16px;
@@ -382,6 +387,10 @@ button.orange {
   gap: 25px;
   max-width: 700px;
   margin: 0 auto;
+  background-color: #FFF7E6;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -587,12 +596,19 @@ button.orange {
 .icon-container {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
 }
 
 .icon-link {
   position: relative;
   display: inline-block;
+}
+
+.icon {
+  height: 42px !important;
+  width: 42px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
 }
 
 .cart-icon, .admin-icon {
@@ -602,12 +618,75 @@ button.orange {
   transition: transform 0.3s;
 }
 
-.cart-icon:hover, .admin-icon:hover {
+.icon-link:hover .cart-icon,
+.icon-link:hover .admin-icon {
   transform: scale(1.1);
 }
 
-.cart-icon:active, .admin-icon:active {
+.icon-link:active .cart-icon,
+.icon-link:active .admin-icon {
   transform: scale(0.95);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #FEE440;
+  color: #FF0000;
+  font-size: 12px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+.playsummer-title {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #FF865E;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+  letter-spacing: 2px;
+  animation: pulse 2s ease infinite;
+  transition: transform 0.3s ease, letter-spacing 0.3s ease;
+  text-decoration: none;
+}
+
+.playsummer-title:hover {
+  transform: scale(1.05);
+  letter-spacing: 3px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.products-link {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #FF865E;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.products-link:hover {
+  background-color: #FEF9EF;
+  color: #FF865E;
+}
+
+.products-link.active {
+  box-shadow: 0 0 8px rgba(254, 228, 64, 0.5);
 }
 
 .footer {
@@ -764,95 +843,6 @@ button.orange {
   text-align: center;
 }
 
-/* Specific styles for icons */
-.icon {
-  height: 42px !important;
-  width: 42px !important;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.icon-container {
-  position: relative;
-  margin-left: 24px !important;
-  margin-right: 24px !important;
-  display: flex;
-  align-items: center;
-}
-
-.icon-container:hover .icon {
-  transform: scale(1.1);
-}
-
-.icon-container:active .icon {
-  transform: scale(0.95);
-}
-
-/* Specific styles for cart count */
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #FEE440;
-  color: #FF0000;
-  font-size: 12px;
-  font-weight: 700;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #FFFFFF;
-}
-
-/* Specific styles for PlaySummer title */
-.playsummer-title {
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  color: #FF865E;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-  line-height: 1.2;
-  letter-spacing: 2px;
-  animation: pulse 2s ease infinite;
-  transition: transform 0.3s ease, letter-spacing 0.3s ease;
-  text-decoration: none;
-}
-
-.playsummer-title:hover {
-  transform: scale(1.05);
-  letter-spacing: 3px;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
-/* Specific styles for Products link */
-.products-link {
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-weight: 600;
-  font-size: 28px;
-  color: #FF865E;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.products-link:hover {
-  background-color: #FEF9EF;
-  color: #FF865E;
-}
-
-.products-link.active {
-  box-shadow: 0 0 8px rgba(254, 228, 64, 0.5);
-}
-
-/* View More and Back to Top styles */
 .view-more-container {
   display: flex;
   justify-content: center;
@@ -903,15 +893,14 @@ button.orange {
 
 /* Responsive adjustments */
 @media (max-width: 639px) {
-  /* หน้า Home */
   .products-controls {
     flex-direction: column;
     align-items: flex-start;
   }
   .search-bar, .sort-select {
     width: 100%;
-    padding: 8px 16px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 16px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 8px 16px;
+    font-size: 16px;
   }
   .products-grid {
     grid-template-columns: 1fr;
@@ -937,8 +926,8 @@ button.orange {
   }
   .cart-item-actions .quantity-btn,
   .cart-item-actions .remove-btn {
-    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 6px 12px;
+    font-size: 14px;
   }
   .cart-checkout {
     justify-content: center;
@@ -975,11 +964,12 @@ button.orange {
   }
   .icon-container {
     justify-content: center;
+    gap: 30px;
   }
   .products-table td {
     display: block;
     text-align: center;
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    font-size: 14px;
     padding: 8px;
   }
   .products-table tr {
@@ -995,47 +985,43 @@ button.orange {
   }
   .action-buttons .edit-btn,
   .action-buttons .delete-btn {
-    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 6px 12px;
+    font-size: 14px;
   }
   .product-image-small {
     margin: 0 auto;
   }
-  /* หน้า Log in */
   .admin-form .form-group input {
-    padding: 10px 14px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 10px 14px;
+    font-size: 14px;
   }
   .admin-form .submit-btn {
-    padding: 12px 24px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 16px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 12px 24px;
+    font-size: 16px;
   }
-  /* หน้า Add New Product */
   .admin-form .form-group input,
   .admin-form .form-group textarea {
-    width: 100%; /* ให้ช่องกรอกใช้ความกว้างเต็มหน้าจอ */
-    padding: 10px 14px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
   }
-  /* หน้า Order */
   .order-confirm {
-    padding: 16px; /* ลด padding สำหรับหน้าจอเล็ก */
+    padding: 16px;
   }
   .order-confirm h1 {
-    font-size: 24px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    font-size: 24px;
   }
   .order-confirm p {
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    font-size: 14px;
   }
   .order-confirm .green {
-    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 6px 12px;
+    font-size: 14px;
   }
-  /* ปุ่ม More Products และ Back to Top */
   .view-more-btn,
   .back-to-top-btn {
-    padding: 8px 32px; /* ลด padding สำหรับหน้าจอเล็ก */
-    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 8px 32px;
+    font-size: 14px;
   }
 }
 

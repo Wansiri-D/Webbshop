@@ -31,6 +31,9 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
   return (
     <div className="admin-page">
       <h1 style={{ textAlign: 'center' }}>Admin Login</h1>
+      <p className="secondary-text welcome-text" style={{ textAlign: 'center', marginBottom: '40px' }}>
+        Please log in to manage your products and orders.
+      </p>
       <form onSubmit={handleLogin} className="admin-form">
         <div className="form-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label htmlFor="username">Username:</label>
