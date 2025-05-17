@@ -382,14 +382,12 @@ button.orange {
   gap: 25px;
   max-width: 700px;
   margin: 0 auto;
-  /* ลบ align-items: center เพื่อให้ฟอร์มกลับไปมีขนาดและตำแหน่งเท่าเดิม */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* ลบ width: 100% และ align-items: center เพื่อให้ฟอร์มกลับไปมีขนาดและตำแหน่งเท่าเดิม */
 }
 
 .form-group label {
@@ -905,12 +903,15 @@ button.orange {
 
 /* Responsive adjustments */
 @media (max-width: 639px) {
+  /* หน้า Home */
   .products-controls {
     flex-direction: column;
     align-items: flex-start;
   }
   .search-bar, .sort-select {
     width: 100%;
+    padding: 8px 16px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 16px; /* ลด font-size สำหรับหน้าจอเล็ก */
   }
   .products-grid {
     grid-template-columns: 1fr;
@@ -933,6 +934,11 @@ button.orange {
   .cart-item-actions {
     justify-content: space-between;
     width: 100%;
+  }
+  .cart-item-actions .quantity-btn,
+  .cart-item-actions .remove-btn {
+    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
   }
   .cart-checkout {
     justify-content: center;
@@ -973,6 +979,8 @@ button.orange {
   .products-table td {
     display: block;
     text-align: center;
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+    padding: 8px;
   }
   .products-table tr {
     display: block;
@@ -981,15 +989,53 @@ button.orange {
   .products-table th {
     display: none;
   }
-  .products-table td {
-    padding: 8px;
-  }
   .action-buttons {
     justify-content: center;
     margin-top: 10px;
   }
+  .action-buttons .edit-btn,
+  .action-buttons .delete-btn {
+    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
   .product-image-small {
     margin: 0 auto;
+  }
+  /* หน้า Log in */
+  .admin-form .form-group input {
+    padding: 10px 14px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  .admin-form .submit-btn {
+    padding: 12px 24px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 16px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  /* หน้า Add New Product */
+  .admin-form .form-group input,
+  .admin-form .form-group textarea {
+    width: 100%; /* ให้ช่องกรอกใช้ความกว้างเต็มหน้าจอ */
+    padding: 10px 14px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  /* หน้า Order */
+  .order-confirm {
+    padding: 16px; /* ลด padding สำหรับหน้าจอเล็ก */
+  }
+  .order-confirm h1 {
+    font-size: 24px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  .order-confirm p {
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  .order-confirm .green {
+    padding: 6px 12px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
+  }
+  /* ปุ่ม More Products และ Back to Top */
+  .view-more-btn,
+  .back-to-top-btn {
+    padding: 8px 32px; /* ลด padding สำหรับหน้าจอเล็ก */
+    font-size: 14px; /* ลด font-size สำหรับหน้าจอเล็ก */
   }
 }
 
