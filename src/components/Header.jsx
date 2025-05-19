@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-// Fallback images ในกรณีที่ไฟล์ PNG โหลดไม่สำเร็จ
-const fallbackSunIcon = 'https://i.postimg.cc/hPC83z9L/sun.png'; // หรือลิงก์ CDN อื่น
-const fallbackCartIcon = 'https://placehold.co/42x42?text=Cart';
-const fallbackAdminIcon = 'https://placehold.co/42x42?text=Admin';
+// Import images จาก src/assets/
+import logo from '../assets/sun.png';
+import cartIcon from '../assets/cart-icon.png';
+import adminIcon from '../assets/admin-icon.png';
 
 const Header = ({ cartCount }) => {
   return (
@@ -19,14 +19,14 @@ const Header = ({ cartCount }) => {
         </NavLink>
       </div>
 
-      {/* PlaySummer ตรงกลาง พร้อม sun.png ด้านหน้า */}
+      {/* PlaySummer ตรงกลาง พร้อม logo.png ด้านหน้า */}
       <div className="navbar-center">
         <Link to="/" className="playsummer-link">
           <img 
-            src="public/sun.png" 
+            src={logo} 
             alt="Sun" 
             className="sun-icon" 
-            onError={(e) => (e.target.src = fallbackSunIcon)} // เพิ่ม fallback
+            onError={(e) => (e.target.src = 'https://via.placeholder.com/80?text=Sun')}
           />
           <h1 className="playsummer-title">PlaySummer</h1>
         </Link>
@@ -36,19 +36,19 @@ const Header = ({ cartCount }) => {
       <div className="icon-container">
         <Link to="/cart" className="icon-link">
           <img 
-            src="public/cart-icon.png" 
+            src={cartIcon} 
             alt="Cart" 
             className="icon cart-icon" 
-            onError={(e) => (e.target.src = fallbackCartIcon)} // เพิ่ม fallback
+            onError={(e) => (e.target.src = 'https://via.placeholder.com/42?text=Cart')}
           />
           {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
         </Link>
         <Link to="/admin" className="icon-link">
           <img 
-            src="public/admin-icon.png" 
+            src={adminIcon} 
             alt="Admin" 
             className="icon admin-icon" 
-            onError={(e) => (e.target.src = fallbackAdminIcon)} // เพิ่ม fallback
+            onError={(e) => (e.target.src = 'https://via.placeholder.com/42?text=Admin')}
           />
         </Link>
       </div>
