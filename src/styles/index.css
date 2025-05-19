@@ -386,7 +386,7 @@ button.orange {
   border: 1px solid rgba(255, 134, 94, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center; /* คงการจัดกึ่งกลางในแนวนอน */
+  align-items: center;
 }
 
 .admin-form {
@@ -407,6 +407,7 @@ button.orange {
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  max-width: 700px;
 }
 
 .form-group label {
@@ -571,7 +572,7 @@ button.orange {
   color: #FF865E;
   text-align: center;
   margin-bottom: 30px;
-  margin-top: 20px; /* เพิ่มระยะห่างจากด้านบน */
+  margin-top: 20px;
 }
 
 .dashboard-stats {
@@ -936,12 +937,15 @@ button.orange {
 @media (max-width: 639px) {
   .products-controls {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* จัดกึ่งกลางในแนวนอน */
+    gap: 12px; /* ปรับระยะห่างให้สมดุล */
   }
   .search-bar, .sort-select {
-    width: 100%;
-    padding: 8px 16px;
+    width: 100% !important; /* ให้ช่องกรอกเต็มความกว้าง */
+    max-width: none !important; /* ลบ max-width เพื่อให้เต็มหน้าจอ */
+    padding: 10px 16px; /* ปรับ padding ให้สมดุล */
     font-size: 16px;
+    box-sizing: border-box; /* ให้แน่ใจว่า padding ไม่ทำให้ช่องกรอกเกิน */
   }
   .products-grid {
     grid-template-columns: 1fr;
@@ -1122,9 +1126,16 @@ button.orange {
     font-size: 24px;
   }
   /* ปรับความยาวช่องฟอร์มในหน้า Add Product */
+  .admin-page {
+    max-width: 1000px !important;
+  }
   .admin-form {
-    max-width: 800px;
+    max-width: 900px !important;
+    width: 100% !important;
     padding: 30px;
+  }
+  .form-group {
+    max-width: 900px !important;
   }
   .form-group input,
   .form-group textarea {
