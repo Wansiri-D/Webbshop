@@ -1,6 +1,4 @@
 @import '@fontsource/open-sans';
-@import '@fontsource/open-sans/600.css';
-@import '@fontsource/open-sans/700.css';
 
 @tailwind base;
 @tailwind components;
@@ -127,7 +125,7 @@ button.orange {
   border: 2px solid rgba(255, 134, 94, 0.5);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: space one;
+  justify-content: space-between;
   align-items: center;
   gap: 24px;
   transition: transform 0.3s ease;
@@ -471,12 +469,12 @@ button.orange {
 .submit-btn {
   background-color: #28A745;
   color: #FFFFFF;
-  padding: 0 28px; /* ปรับ padding ให้สมดุลกับขนาดใหม่ */
+  padding: 0 28px;
   border-radius: 8px;
   font-size: 18px;
   transition: transform 0.3s ease;
-  width: 220px; /* เพิ่มขนาดปุ่มให้สมดุลกับฟอร์ม */
-  height: 54px; /* เพิ่มความสูงให้สมดุล */
+  width: 220px;
+  height: 54px;
   line-height: 54px;
   box-sizing: border-box;
   align-self: center;
