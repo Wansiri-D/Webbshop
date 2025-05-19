@@ -234,7 +234,7 @@ const EditProducts = ({ setNotification }) => {
       {editingProduct ? (
         <div className="edit-form">
           <h2>{editingProduct.name}</h2>
-          <form onSubmit={handleUpdate} className="admin-form">
+          <form onSubmit={handleUpdate} className="admin-form edit-product-form">
             <div className="form-group">
               <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
               <input
@@ -291,7 +291,7 @@ const EditProducts = ({ setNotification }) => {
             </div>
             <div className="form-actions">
               <button type="submit" className="submit-btn" disabled={loading}>
-                {loading ? 'Updating Product...' : 'Update Product'}
+                {loading ? 'Updating...' : 'Update'}
               </button>
               <button
                 type="button"

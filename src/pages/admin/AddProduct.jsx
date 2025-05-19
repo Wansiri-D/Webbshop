@@ -103,7 +103,7 @@ const AddProduct = ({ setNotification }) => {
   return (
     <div className="admin-page">
       <h1>Add New Product</h1>
-      <form onSubmit={handleSubmit} className="admin-form">
+      <form onSubmit={handleSubmit} className="admin-form add-product-form">
         <div className="form-group">
           <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
           <input
@@ -158,9 +158,11 @@ const AddProduct = ({ setNotification }) => {
             required
           />
         </div>
-        <button type="submit" className="submit-btn" disabled={loading}>
-          {loading ? 'Adding Product...' : 'Add Product'}
-        </button>
+        <div className="form-actions">
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? 'Adding Product...' : 'Add Product'}
+          </button>
+        </div>
         {progress && <p className="progress">{progress}</p>}
       </form>
     </div>
