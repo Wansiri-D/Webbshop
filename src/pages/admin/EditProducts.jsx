@@ -124,12 +124,36 @@ const EditProducts = ({ setNotification }) => {
     return imageExtensions.test(url);
   };
 
+  const validateForm = () => {
+    if (updatedProduct.name.length < 5) {
+      setNotification('Product Name must be at least 5 characters long. 😓');
+      return false;
+    }
+
+    const priceValue = parseFloat(updatedProduct.price);
+    if (isNaN(priceValue) || priceValue <= 0 || !Number.isInteger(priceValue)) {
+      setNotification('Price must be a positive integer. 😓');
+      return false;
+    }
+
+    if (updatedProduct.description.length < 10) {
+      setNotification('Description must be at least 10 characters long. 😓');
+      return false;
+    }
+
+    if (updatedProduct.imageUrl && !validateImageUrl(updatedProduct.imageUrl)) {
+      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+      return false;
+    }
+
+    return true;
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    if (!validateImageUrl(updatedProduct.imageUrl)) {
-      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+    if (!validateForm()) {
       setLoading(false);
       return;
     }
@@ -199,7 +223,6 @@ const EditProducts = ({ setNotification }) => {
     setProductToDelete(null);
   };
 
-  // ฟังก์ชันสำหรับเลื่อนกลับไปด้านบน
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -210,40 +233,48 @@ const EditProducts = ({ setNotification }) => {
 
       {editingProduct ? (
         <div className="edit-form">
-          <h2>Edit Product: {editingProduct.name}</h2>
+          <h2>{editingProduct.name}</h2>
           <form onSubmit={handleUpdate} className="admin-form">
             <div className="form-group">
-              <label htmlFor="name">Product Name:</label>
+              <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={updatedProduct.name}
                 onChange={handleInputChange}
+                placeholder="Must be at least 5 characters long"
                 required
+                minLength={5}
+                title="Product Name must be at least 5 characters long."
               />
             </div>
             <div className="form-group">
-              <label htmlFor="price">Price (SEK):</label>
+              <label htmlFor="price">Price (SEK): <span className="required-asterisk">*</span></label>
               <input
                 type="number"
                 id="price"
                 name="price"
                 value={updatedProduct.price}
                 onChange={handleInputChange}
+                placeholder="Must be a positive integer"
                 required
-                min="0"
-                step="0.01"
+                min="1"
+                step="1"
+                title="Price must be a positive integer."
               />
             </div>
             <div className="form-group">
-              <label htmlFor="description">Description:</label>
+              <label htmlFor="description">Description: <span className="required-asterisk">*</span></label>
               <textarea
                 id="description"
                 name="description"
                 value={updatedProduct.description}
                 onChange={handleInputChange}
+                placeholder="Must be at least 10 characters long"
                 required
+                minLength={10}
+                title="Description must be at least 10 characters long."
               />
             </div>
             <div className="form-group">
@@ -254,7 +285,7 @@ const EditProducts = ({ setNotification }) => {
                 name="imageUrl"
                 value={updatedProduct.imageUrl}
                 onChange={handleInputChange}
-                placeholder="https://example.com/image.jpg"
+                placeholder="Must be a valid URL (e.g., https://example.com/image.jpg) if provided"
               />
               <p>Current Image: <a href={editingProduct.imageUrl} target="_blank" rel="noopener noreferrer">View Image</a></p>
             </div>
@@ -331,7 +362,6 @@ const EditProducts = ({ setNotification }) => {
         onCancel={cancelDelete}
       />
 
-      {/* เพิ่มปุ่ม Back to Top */}
       <div className="back-to-top-container">
         <button onClick={scrollToTop} className="back-to-top-btn">
           Back to Top <span className="back-to-top-arrow">↑</span>

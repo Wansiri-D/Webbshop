@@ -19,7 +19,7 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
 
     if (username === adminCredentials.username && password === adminCredentials.password) {
       setIsAdmin(true);
-      setNotification('Welcome admin!');
+      // ลบการแสดงกล่องข้อความ "Welcome admin!"
       navigate('/admin');
     } else {
       setNotification('Oops! Incorrect username or password. Please try again. 😓');

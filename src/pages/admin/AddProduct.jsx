@@ -31,12 +31,39 @@ const AddProduct = ({ setNotification }) => {
     return imageExtensions.test(url);
   };
 
+  const validateForm = () => {
+    if (product.name.length < 5) {
+      setNotification('Product Name must be at least 5 characters long. 😓');
+      return false;
+    }
+
+    const priceValue = parseFloat(product.price);
+    if (isNaN(priceValue) || priceValue <= 0 || !Number.isInteger(priceValue)) {
+      setNotification('Price must be a positive integer. 😓');
+      return false;
+    }
+
+    if (product.description.length < 10) {
+      setNotification('Description must be at least 10 characters long. 😓');
+      return false;
+    }
+
+    if (!imageUrl) {
+      setNotification('Product Image URL is required. 😓');
+      return false;
+    }
+    if (!validateImageUrl(imageUrl)) {
+      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ตรวจสอบ URL รูปภาพ
-    if (!validateImageUrl(imageUrl)) {
-      setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
+    if (!validateForm()) {
       return;
     }
 
@@ -78,48 +105,56 @@ const AddProduct = ({ setNotification }) => {
       <h1>Add New Product</h1>
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
-          <label htmlFor="name">Product Name:</label>
+          <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
           <input
             type="text"
             id="name"
             name="name"
             value={product.name}
             onChange={handleInputChange}
+            placeholder="Must be at least 5 characters long"
             required
+            minLength={5}
+            title="Product Name must be at least 5 characters long."
           />
         </div>
         <div className="form-group">
-          <label htmlFor="price">Price (SEK):</label>
+          <label htmlFor="price">Price (SEK): <span className="required-asterisk">*</span></label>
           <input
             type="number"
             id="price"
             name="price"
             value={product.price}
             onChange={handleInputChange}
+            placeholder="Must be a positive integer"
             required
-            min="0"
-            step="0.01"
+            min="1"
+            step="1"
+            title="Price must be a positive integer."
           />
         </div>
         <div className="form-group">
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description">Description: <span className="required-asterisk">*</span></label>
           <textarea
             id="description"
             name="description"
             value={product.description}
             onChange={handleInputChange}
+            placeholder="Must be at least 10 characters long"
             required
+            minLength={10}
+            title="Description must be at least 10 characters long."
           />
         </div>
         <div className="form-group">
-          <label htmlFor="imageUrl">Product Image URL:</label>
+          <label htmlFor="imageUrl">Product Image URL: <span className="required-asterisk">*</span></label>
           <input
             type="url"
             id="imageUrl"
             name="imageUrl"
             value={imageUrl}
             onChange={handleImageUrlChange}
-            placeholder="https://example.com/image.jpg"
+            placeholder="Must be a valid URL (e.g., https://example.com/image.jpg)"
             required
           />
         </div>

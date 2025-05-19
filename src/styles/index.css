@@ -50,9 +50,14 @@ p {
   color: #666666;
 }
 
-/* เพิ่มสไตล์สำหรับคำต้อนรับ */
 .welcome-text {
-  font-size: 16px; /* เพิ่มขนาดจาก 14px เป็น 16px */
+  font-size: 16px;
+}
+
+.required-asterisk {
+  color: #FF0000;
+  font-size: 18px;
+  margin-left: 2px;
 }
 
 button {
@@ -413,6 +418,7 @@ button.orange {
   font-size: 16px;
   font-family: 'Open Sans', Arial, sans-serif;
   transition: all 0.3s ease;
+  box-sizing: border-box; /* เพิ่มเพื่อให้แน่ใจว่า padding ไม่ทำให้ช่องกรอกเลยกรอบ */
 }
 
 .form-group input:focus,
@@ -420,6 +426,14 @@ button.orange {
   outline: none;
   border-color: #FEE440;
   box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
+}
+
+/* ปรับแต่ง placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #666666;
+  font-size: 14px;
+  opacity: 1; /* เพื่อให้มองเห็นชัดเจน */
 }
 
 .form-group textarea {
@@ -991,19 +1005,19 @@ button.orange {
   .product-image-small {
     margin: 0 auto;
   }
-  .admin-form .form-group input {
-    padding: 10px 14px;
-    font-size: 14px;
-  }
-  .admin-form .submit-btn {
-    padding: 12px 24px;
-    font-size: 16px;
+  .admin-form {
+    max-width: 100%; /* ปรับ max-width ให้เล็กลงในหน้าจอมือถือ */
+    padding: 15px; /* ลด padding ในหน้าจอมือถือ */
   }
   .admin-form .form-group input,
   .admin-form .form-group textarea {
     width: 100%;
     padding: 10px 14px;
     font-size: 14px;
+  }
+  .admin-form .submit-btn {
+    padding: 12px 24px;
+    font-size: 16px;
   }
   .order-confirm {
     padding: 16px;
