@@ -27,6 +27,10 @@ const AddProduct = ({ setNotification }) => {
   };
 
   const validateImageUrl = (url) => {
+    if (!url) {
+      setNotification('Product Image URL is required. 😓');
+      return false;
+    }
     const imageExtensions = /\.(jpg|jpeg|png|gif)$/i;
     return imageExtensions.test(url);
   };
@@ -48,10 +52,6 @@ const AddProduct = ({ setNotification }) => {
       return false;
     }
 
-    if (!imageUrl) {
-      setNotification('Product Image URL is required. 😓');
-      return false;
-    }
     if (!validateImageUrl(imageUrl)) {
       setNotification('Oops! It looks like the image URL isn\'t valid. Please use a link ending with .jpg, .png, .jpeg, or .gif. 😊');
       return false;
@@ -100,71 +100,87 @@ const AddProduct = ({ setNotification }) => {
     }
   };
 
+  const handleCancel = () => {
+    setProduct({ name: '', price: '', description: '' });
+    setImageUrl('');
+    setProgress('');
+  };
+
   return (
     <div className="admin-page">
-      <h1>Add New Product</h1>
-      <form onSubmit={handleSubmit} className="admin-form add-product-form">
-        <div className="form-group">
-          <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={product.name}
-            onChange={handleInputChange}
-            placeholder="Must be at least 5 characters long"
-            required
-            minLength={5}
-            title="Product Name must be at least 5 characters long."
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="price">Price (SEK): <span className="required-asterisk">*</span></label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={product.price}
-            onChange={handleInputChange}
-            placeholder="Must be a positive integer"
-            required
-            min="1"
-            step="1"
-            title="Price must be a positive integer."
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description: <span className="required-asterisk">*</span></label>
-          <textarea
-            id="description"
-            name="description"
-            value={product.description}
-            onChange={handleInputChange}
-            placeholder="Must be at least 10 characters long"
-            required
-            minLength={10}
-            title="Description must be at least 10 characters long."
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="imageUrl">Product Image URL: <span className="required-asterisk">*</span></label>
-          <input
-            type="url"
-            id="imageUrl"
-            name="imageUrl"
-            value={imageUrl}
-            onChange={handleImageUrlChange}
-            placeholder="Must be a valid URL (e.g., https://example.com/image.jpg)"
-            required
-          />
-        </div>
-        <div className="form-actions">
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? 'Adding Product...' : 'Add Product'}
-          </button>
-        </div>
-        {progress && <p className="progress">{progress}</p>}
-      </form>
+      <div className="edit-form">
+        <h1>Add New Product</h1>
+        <form onSubmit={handleSubmit} className="admin-form add-product-form">
+          <div className="form-group">
+            <label htmlFor="name">Product Name: <span className="required-asterisk">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={product.name}
+              onChange={handleInputChange}
+              placeholder="Must be at least 5 characters long"
+              required
+              minLength={5}
+              title="Product Name must be at least 5 characters long."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="price">Price (SEK): <span className="required-asterisk">*</span></label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={product.price}
+              onChange={handleInputChange}
+              placeholder="Must be a positive integer"
+              required
+              min="1"
+              step="1"
+              title="Price must be a positive integer."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description">Description: <span className="required-asterisk">*</span></label>
+            <textarea
+              id="description"
+              name="description"
+              value={product.description}
+              onChange={handleInputChange}
+              placeholder="Must be at least 10 characters long"
+              required
+              minLength={10}
+              title="Description must be at least 10 characters long."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl">Product Image URL: <span className="required-asterisk">*</span></label>
+            <input
+              type="url"
+              id="imageUrl"
+              name="imageUrl"
+              value={imageUrl}
+              onChange={handleImageUrlChange}
+              placeholder="Must be a valid URL (e.g., https://example.com/image.jpg)"
+              required
+            />
+          </div>
+          <div className="form-actions">
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? 'Adding Product...' : 'Add Product'}
+            </button>
+            <button
+              type="button"
+              className="cancel-btn"
+              onClick={handleCancel}
+              disabled={loading}
+            >
+              Cancel
+            </button>
+          </div>
+          {progress && <p className="progress">{progress}</p>}
+        </form>
+      </div>
     </div>
   );
 };

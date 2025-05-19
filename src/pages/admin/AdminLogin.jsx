@@ -29,37 +29,39 @@ const AdminLogin = ({ setIsAdmin, setNotification }) => {
 
   return (
     <div className="admin-page">
-      <h1 style={{ textAlign: 'center' }}>Admin Login</h1>
-      <p className="secondary-text welcome-text" style={{ textAlign: 'center', marginBottom: '40px' }}>
-        Please log in to manage your products and orders.
-      </p>
-      <form onSubmit={handleLogin} className="admin-form">
-        <div className="form-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            style={{ maxWidth: '300px', width: '100%' }}
-          />
-        </div>
-        <div className="form-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ maxWidth: '300px', width: '100%' }}
-          />
-        </div>
-        <button type="submit" className="submit-btn" disabled={loading}>
-          {loading ? 'Logging in...' : 'Log in'}
-        </button>
-      </form>
+      <div className="edit-form">
+        <h1 className="admin-login-title">Admin Login</h1>
+        <p className="secondary-text welcome-text admin-login-subtitle">
+          Please log in to manage your products and orders.
+        </p>
+        <form onSubmit={handleLogin} className="admin-form admin-login-form">
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-actions">
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? 'Logging in...' : 'Log in'}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

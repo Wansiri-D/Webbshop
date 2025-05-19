@@ -127,7 +127,7 @@ button.orange {
   border: 2px solid rgba(255, 134, 94, 0.5);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: space-between;
+  justify-content: space one;
   align-items: center;
   gap: 24px;
   transition: transform 0.3s ease;
@@ -376,10 +376,10 @@ button.orange {
 
 /* Admin Page styles */
 .admin-page {
-  max-width: 1100px !important;
+  max-width: 1100px;
   min-height: 600px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 40px;
   background-color: #FEF9EF;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
@@ -390,97 +390,96 @@ button.orange {
   min-height: calc(100vh - 60px);
 }
 
-/* ปรับกรอบในหน้า Edit Product และ Add New Product ให้ยาวขึ้น */
+/* ปรับกรอบในหน้า Edit Product, Add New Product และ Admin Login ให้ยาวขึ้น */
 .admin-page:has(.edit-product-form),
-.admin-page:has(.add-product-form) {
-  max-width: 1200px !important; /* ปรับให้ยาวขึ้น */
+.admin-page:has(.add-product-form),
+.admin-page:has(.admin-login-form) {
+  max-width: 1400px;
 }
 
 .admin-page .admin-form {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 25px !important;
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  background-color: #FFF7E6 !important;
-  padding: 30px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  align-items: flex-start !important;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #FFF7E6;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
 }
 
-/* ปรับฟอร์มในหน้า Edit Product และ Add New Product ให้ยาวขึ้น */
+/* ปรับฟอร์มในหน้า Edit Product, Add New Product และ Admin Login ให้ยาวขึ้น */
 .admin-page .admin-form.edit-product-form,
-.admin-page .admin-form.add-product-form {
-  max-width: 1200px !important; /* ปรับให้ยาวขึ้น */
-}
-
+.admin-page .admin-form.add-product-form,
 .admin-page .admin-form.admin-login-form {
-  max-width: 1200px !important;
+  max-width: 1400px;
 }
 
 .admin-page .admin-form .form-group {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 10px !important;
-  margin: 0 !important;
-  align-items: flex-start !important;
-  width: 100% !important;
-  max-width: 1100px !important;
-  box-sizing: border-box !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1100px;
+  box-sizing: border-box;
 }
 
 /* ปรับ form-group ในหน้า Edit Product, Add New Product และ Admin Login ให้ยาวขึ้น */
 .admin-page .admin-form.edit-product-form .form-group,
 .admin-page .admin-form.add-product-form .form-group,
 .admin-page .admin-form.admin-login-form .form-group {
-  max-width: 1200px !important; /* ปรับให้ยาวขึ้น */
+  max-width: 1400px;
 }
 
 .admin-page .admin-form .form-group label {
-  font-size: 18px !important;
-  font-weight: 600 !important;
-  color: #FF865E !important;
-  text-align: left !important;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FF865E;
+  text-align: left;
 }
 
 .admin-page .admin-form .form-group input,
 .admin-page .admin-form .form-group textarea {
-  padding: 14px 18px !important;
-  border: 2px solid #FF865E !important;
-  border-radius: 8px !important;
-  font-size: 16px !important;
-  font-family: 'Open Sans', Arial, sans-serif !important;
-  transition: all 0.3s ease !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
-  margin: 0 !important;
-  text-align: left !important;
+  padding: 14px 18px;
+  border: 2px solid #FF865E;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  text-align: left;
 }
 
 .admin-page .admin-form .form-group input:focus,
 .admin-page .admin-form .form-group textarea:focus {
-  outline: none !important;
-  border-color: #FEE440 !important;
-  box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3) !important;
+  outline: none;
+  border-color: #FEE440;
+  box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
 }
 
 .admin-page .admin-form .form-group textarea {
-  resize: vertical !important;
-  min-height: 120px !important;
+  resize: vertical;
+  min-height: 120px;
 }
 
 .submit-btn {
   background-color: #28A745;
   color: #FFFFFF;
-  padding: 0 32px !important;
+  padding: 0 28px; /* ปรับ padding ให้สมดุลกับขนาดใหม่ */
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   transition: transform 0.3s ease;
-  width: 200px !important;
-  height: 60px !important;
-  line-height: 60px !important;
-  box-sizing: border-box !important;
+  width: 220px; /* เพิ่มขนาดปุ่มให้สมดุลกับฟอร์ม */
+  height: 54px; /* เพิ่มความสูงให้สมดุล */
+  line-height: 54px;
+  box-sizing: border-box;
+  align-self: center;
 }
 
 .submit-btn:hover {
@@ -496,15 +495,15 @@ button.orange {
 .cancel-btn {
   background-color: #DC3545;
   color: #FFFFFF;
-  padding: 0 32px !important;
+  padding: 0 24px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   transition: transform 0.3s ease;
   margin-left: 15px;
-  width: 200px !important;
-  height: 60px !important;
-  line-height: 60px !important;
-  box-sizing: border-box !important;
+  width: 180px;
+  height: 50px;
+  line-height: 50px;
+  box-sizing: border-box;
 }
 
 .cancel-btn:hover {
@@ -546,15 +545,18 @@ button.orange {
 
 .products-table td {
   background-color: #FFFFFF;
+  font-size: 16px;
 }
 
 .product-image-small {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid #E5E7EB;
   vertical-align: middle;
+  display: block;
+  margin: 0 auto;
 }
 
 .action-buttons {
@@ -595,17 +597,19 @@ button.orange {
   margin-bottom: 20px;
 }
 
-/* ปรับชื่อสินค้าในหน้า Edit Menu ให้อยู่กึ่งกลาง */
+/* ปรับชื่อสินค้าและหัวข้อในหน้า Edit Menu และ Add Product ให้อยู่กึ่งกลาง */
+.edit-form h1,
 .edit-form h2 {
-  text-align: center !important;
-  width: 100% !important;
+  text-align: center;
+  width: 100%;
 }
 
 .form-actions {
   display: flex;
   gap: 15px;
   justify-content: center;
-  align-items: center !important; /* ปรับให้ปุ่มอยู่ในระดับเดียวกัน */
+  align-items: center;
+  width: 100%;
 }
 
 /* Dashboard styles */
@@ -634,6 +638,16 @@ button.orange {
   margin-top: 30px;
   font-style: italic;
   line-height: 1.5;
+}
+
+/* Custom styles for Admin Login */
+.admin-login-title {
+  text-align: center;
+}
+
+.admin-login-subtitle {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 /* Custom styles for components */
@@ -971,7 +985,7 @@ button.orange {
   transform: scale(1.1);
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for customer-facing pages */
 @media (max-width: 639px) {
   .products-controls {
     flex-direction: column;
@@ -1104,20 +1118,6 @@ button.orange {
   }
   .product-image-small {
     margin: 0 auto;
-  }
-  .admin-form {
-    max-width: 100%;
-    padding: 15px;
-  }
-  .admin-form .form-group input,
-  .admin-form .form-group textarea {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 14px;
-  }
-  .admin-form .submit-btn {
-    padding: 12px 24px;
-    font-size: 16px;
   }
   .order-confirm {
     padding: 16px;

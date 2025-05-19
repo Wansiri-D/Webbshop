@@ -230,7 +230,6 @@ const EditProducts = ({ setNotification }) => {
   return (
     <div className="admin-page">
       <h1>Edit Products</h1>
-
       {editingProduct ? (
         <div className="edit-form">
           <h2>{editingProduct.name}</h2>
