@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import AddProduct from './admin/AddProduct';
 import EditProducts from './admin/EditProducts';
@@ -52,17 +52,29 @@ const NotificationModal = ({ message, onClose }) => {
   );
 };
 
-const Admin = () => {
+const Admin = ({ setIsAdmin, setNotification }) => {
   const navigate = useNavigate();
-  const [notification, setNotification] = useState(null);
+  const [notification, setLocalNotification] = useState(null);
+
+  // นำทางไปยัง /admin/add หากอยู่ในเส้นทาง /admin/
+  useEffect(() => {
+    if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
+      navigate('/admin/add');
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     console.log('Logging out...');
+    if (typeof setIsAdmin === 'function') {
+      setIsAdmin(false);
+    } else {
+      console.warn('setIsAdmin is not a function');
+    }
     navigate('/');
   };
 
   const closeNotification = () => {
-    setNotification(null);
+    setLocalNotification(null);
   };
 
   return (
@@ -86,7 +98,7 @@ const Admin = () => {
             onClick={handleLogout}
             className="admin-nav-link admin-logout"
           >
-            <span className="nav-icon">🚪</span> Log out
+            <span className="nav-icon">🚪</span> Log Out
           </button>
         </nav>
       </div>
@@ -94,9 +106,8 @@ const Admin = () => {
       {/* Main Content */}
       <div className="admin-content">
         <Routes>
-          <Route path="add" element={<AddProduct setNotification={setNotification} />} />
-          <Route path="edit" element={<EditProducts setNotification={setNotification} />} />
-          <Route path="/" element={<AddProduct setNotification={setNotification} />} />
+          <Route path="add" element={<AddProduct setNotification={setNotification} setIsAdmin={setIsAdmin} />} />
+          <Route path="edit" element={<EditProducts setNotification={setNotification} setIsAdmin={setIsAdmin} />} />
         </Routes>
       </div>
 

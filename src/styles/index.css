@@ -396,6 +396,7 @@ button.orange {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-items: center; /* ทำให้ทุกองค์ประกอบในฟอร์มอยู่กึ่งกลาง */
 }
 
 .form-group {
@@ -418,7 +419,7 @@ button.orange {
   font-size: 16px;
   font-family: 'Open Sans', Arial, sans-serif;
   transition: all 0.3s ease;
-  box-sizing: border-box; /* เพิ่มเพื่อให้แน่ใจว่า padding ไม่ทำให้ช่องกรอกเลยกรอบ */
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -428,12 +429,11 @@ button.orange {
   box-shadow: 0 2px 8px rgba(254, 228, 64, 0.3);
 }
 
-/* ปรับแต่ง placeholder */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #666666;
   font-size: 14px;
-  opacity: 1; /* เพื่อให้มองเห็นชัดเจน */
+  opacity: 1;
 }
 
 .form-group textarea {
@@ -449,6 +449,7 @@ button.orange {
   font-size: 20px;
   transition: transform 0.3s ease;
   align-self: center;
+  margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
 }
 
 .submit-btn:hover {
@@ -951,15 +952,46 @@ button.orange {
   }
   .admin-sidebar {
     width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 15px 10px;
+    background-color: #FFF7E6;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     height: auto;
+  }
+  .admin-nav {
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  .admin-nav-link {
+    font-size: 16px;
+    padding: 8px 12px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .admin-nav-link.active {
+    font-size: 18px;
+  }
+  .admin-nav-link .nav-icon {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  .admin-logout {
+    font-size: 16px;
+    padding: 8px 12px;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .admin-logout .nav-icon {
+    font-size: 16px;
+    margin-right: 8px;
   }
   .admin-content {
     margin-left: 0;
-  }
-  .admin-nav {
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
   }
   .navbar {
     flex-direction: column;
@@ -1006,8 +1038,8 @@ button.orange {
     margin: 0 auto;
   }
   .admin-form {
-    max-width: 100%; /* ปรับ max-width ให้เล็กลงในหน้าจอมือถือ */
-    padding: 15px; /* ลด padding ในหน้าจอมือถือ */
+    max-width: 100%;
+    padding: 15px;
   }
   .admin-form .form-group input,
   .admin-form .form-group textarea {

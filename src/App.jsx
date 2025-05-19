@@ -91,7 +91,6 @@ const App = () => {
       }
 
       console.log('Updated cartItems:', updatedItems);
-      // ลบการแจ้งเตือนออก
       return updatedItems;
     });
   };
@@ -100,7 +99,6 @@ const App = () => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter((item) => item.docId !== itemDocId);
       console.log('Updated cartItems after remove:', updatedItems);
-      // ลบการแจ้งเตือนออก
       return updatedItems;
     });
   };
@@ -121,7 +119,6 @@ const App = () => {
     console.log('handleCheckout called at:', new Date().toISOString());
     navigate('/order');
     setCartItems([]);
-    // ลบการแจ้งเตือนออก
   };
 
   useEffect(() => {
@@ -170,7 +167,13 @@ const App = () => {
           />
           <Route
             path="/admin/*"
-            element={isAdmin ? <Admin /> : <AdminLogin setIsAdmin={setIsAdmin} setNotification={setNotification} />}
+            element={
+              isAdmin ? (
+                <Admin setIsAdmin={setIsAdmin} setNotification={setNotification} />
+              ) : (
+                <AdminLogin setIsAdmin={setIsAdmin} setNotification={setNotification} />
+              )
+            }
           />
         </Routes>
       </main>
