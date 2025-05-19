@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import AddProduct from './admin/AddProduct';
 import EditProducts from './admin/EditProducts';
+import AdminDashboard from './AdminDashboard';
 
 // คอมโพเนนต์ Modal สำหรับแสดงข้อความแจ้งเตือน
 const NotificationModal = ({ message, onClose }) => {
@@ -52,29 +53,25 @@ const NotificationModal = ({ message, onClose }) => {
   );
 };
 
-const Admin = ({ setIsAdmin, setNotification }) => {
+const Admin = ({ setIsAdmin }) => {
   const navigate = useNavigate();
-  const [notification, setLocalNotification] = useState(null);
+  const [notification, setNotification] = useState(null);
 
-  // นำทางไปยัง /admin/add หากอยู่ในเส้นทาง /admin/
+  // นำทางไปยัง /admin หากอยู่ในเส้นทาง /admin/
   useEffect(() => {
     if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
-      navigate('/admin/add');
+      navigate('/admin');
     }
   }, [navigate]);
 
   const handleLogout = () => {
     console.log('Logging out...');
-    if (typeof setIsAdmin === 'function') {
-      setIsAdmin(false);
-    } else {
-      console.warn('setIsAdmin is not a function');
-    }
+    setIsAdmin(false);
     navigate('/');
   };
 
   const closeNotification = () => {
-    setLocalNotification(null);
+    setNotification(null);
   };
 
   return (
@@ -106,6 +103,7 @@ const Admin = ({ setIsAdmin, setNotification }) => {
       {/* Main Content */}
       <div className="admin-content">
         <Routes>
+          <Route path="/" element={<AdminDashboard setNotification={setNotification} setIsAdmin={setIsAdmin} />} />
           <Route path="add" element={<AddProduct setNotification={setNotification} setIsAdmin={setIsAdmin} />} />
           <Route path="edit" element={<EditProducts setNotification={setNotification} setIsAdmin={setIsAdmin} />} />
         </Routes>
